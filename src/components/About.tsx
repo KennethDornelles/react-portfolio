@@ -7,8 +7,16 @@ export default function About() {
           <span className="font-handwriting text-4xl">Mim</span>
         </h2>
         <p className="relative text-sm text-gray-600">
-          Tenho mais de 10 projetos executados e gostaria que o próximo seja o
-          seu.
+          Me chamo Kenneth, possuo 25 anos apaixonado por tecnologia,
+          videogames, música, codar e artes marciais, as quais são a minha vida
+          desde meus 5 anos onde procuro me libertar dos problemas e aflições,
+          minha experiência profissional que mais me impactou foi ter a
+          oportunidade de trabalhar do desenvolvimento do ecossistema Cobby by
+          PurpleCats o primeiro banco crypto do Brasil. Minha Stack engloba
+          Javascript, Typescript, PrismaOrm, GraphQl, RabbitMQ,
+          PostgreSQL/MySql, Docker, Azure Devops, HTML, CSS e
+          React/React-Native, conhecimento em inglês intermediário B1
+          certificado e japonês B1 também certificado.
         </p>
         <div className="absolute left-1/2 top-3 z-0 h-10 w-10 rounded-lg bg-blue-100/40" />
       </div>
@@ -20,7 +28,7 @@ export default function About() {
             <p>
               <span className="mr-1">Meu nome é</span>
               <span className="font-headline font-bold uppercase text-blue-900">
-                João Henrique
+                Kenneth Olusegun
               </span>
             </p>
 
@@ -30,7 +38,7 @@ export default function About() {
                   <td className="font-headline font-bold uppercase text-blue-900">
                     Idade:
                   </td>
-                  <td>28</td>
+                  <td>25</td>
                 </tr>
                 <tr>
                   <td className="font-headline font-bold uppercase text-blue-900">
@@ -38,10 +46,10 @@ export default function About() {
                   </td>
                   <td>
                     <a
-                      href="tel:+551299999999"
+                      href="tel:+5551997647760"
                       className="underline hover:text-blue-800"
                     >
-                      +55 12 9.999-9999
+                      +55 51 99764-7760
                     </a>
                   </td>
                 </tr>
@@ -51,10 +59,10 @@ export default function About() {
                   </td>
                   <td>
                     <a
-                      href="mailto:joao-test@testemail.com"
+                      href="mailto:kennetholusegun@gmail.com"
                       className="underline hover:text-blue-800"
                     >
-                      joao-test@testemail.com
+                      kennetholusegun@gmail.com
                     </a>
                   </td>
                 </tr>
@@ -68,7 +76,7 @@ export default function About() {
                       target="_blank"
                       className="underline hover:text-blue-800"
                     >
-                      São José dos Campos - SP
+                      Porto Alegre - RS
                     </a>
                   </td>
                 </tr>
@@ -86,7 +94,7 @@ export default function About() {
               </tbody>
             </table>
           </div>
-          <div className="absolute -left-2 -top-4 h-24 w-20 rounded-lg bg-gray-600 bg-[url(https://unsplash.com/pt-br/fotografias/T72hXF-DzI8)] bg-cover bg-center md:-left-12 md:-top-12 md:h-72 md:w-56"></div>
+          <div className="absolute -left-2 -top-4 h-24 w-20 rounded-lg bg-gray-600 bg-[url(https://images.unsplash.com/photo-1685382982342-5a9ced7baa3b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80)] bg-cover bg-center md:-left-12 md:-top-12 md:h-72 md:w-56"></div>
         </div>
       </div>
     </section>

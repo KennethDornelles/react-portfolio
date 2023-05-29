@@ -3,11 +3,14 @@ import { HiAcademicCap, HiCodeBracketSquare } from "react-icons/hi2"
 export default function Skills() {
   const educations = [
     {
-      name: "Curso de Desenvolvimento Web Full Stack | Dev Samurai",
+      name: "Curso de Desenvolvimento Web Full Stack | Cod3r Cursos",
     },
     {
-      name: "Curso de Desenvolvimento Mobile | Dev Samurai",
+      name: "Curso de Desenvolvimento React-Native | Cod3r Cursos",
     },
+	{
+		name: "Curso de Typescript | Matheus Battisti"
+	}
   ]
 
   const skills = [
@@ -29,7 +32,32 @@ export default function Skills() {
     {
       name: "Node.js",
       icon: "images/nodejs.svg",
-      level: 65,
+      level: 90,
+    },
+	{
+      name: "GraphQL",
+      icon: "/images/graphql.svg",
+      level: 60,
+    },
+	{
+      name: "PrismaORM",
+      icon: "images/prisma.svg",
+      level: 55,
+    },
+	{
+      name: "PostgreSQL",
+      icon: "images/postgres.png",
+      level: 80,
+    },
+	{
+      name: "Docker",
+      icon: "images/docker.png",
+      level: 60,
+    },
+	{
+      name: "MongoDB",
+      icon: "images/mongo.svg",
+      level: 60,
     },
   ]
 
@@ -46,8 +74,8 @@ export default function Skills() {
             </span>
           </h2>
           <p className="relative text-sm text-gray-700">
-            Front-end Developer | React.js | React Native | Node.js | TypeScript
-            | JavaScript
+            Fullstack Developer | React.js | React Native | Node.js | TypeScript
+            | JavaScript | GRaphQL | TypeORM | PrismaORM | PostgreSQL | Docker | MongoDB
           </p>
           <div className="absolute left-1/2 top-3 z-0 h-10 w-10 rounded-lg bg-blue-400/10" />
         </div>

@@ -43,20 +43,20 @@ export default function Contact() {
   const contacts = [
     {
       name: "WhatsApp",
-      description: "+55 12 9.999-9999",
-      link: "https://wa.me/5512982041640?text=Olá...",
+      description: "+55 51 99764776",
+      link: "https://api.whatsapp.com/send?phone=5551997647760&text=Olá%20gostaria%20de%20fazer%20um%20orçamento%20dos%20teus%20serviços😍",
       icon: <FaWhatsapp className="h-10 w-10" />,
     },
     {
       name: "Email",
-      description: "joao-test@testemail.com",
-      link: "mailto:joao-test@testemail.com?subject=Olá...",
+      description: "kennetholusegun@gmail.com",
+      link: "mailto:kennetholusegun@gmail.com",
       icon: <HiOutlineEnvelope className="h-10 w-10" />,
     },
     {
-      name: "São José dos Campos",
-      description: "Centro, 123",
-      link: "https://goo.gl/maps/4yacADQtLB8jz8zn9?coh=178573&entry=tt",
+      name: "Porto Alegre - RS",
+      description: "Medianeira, 288",
+      link: "https://www.google.com/maps/place/Porto+Alegre,+RS/@-30.1084702,-51.3419543,11z/data=!3m1!4b1!4m6!3m5!1s0x95199cd2566acb1d:0x603111a89f87e91f!8m2!3d-30.0368176!4d-51.2089887!16zL20vMDE3NTc1?entry=ttu",
       icon: <HiOutlineMapPin className="h-10 w-10" />,
     },
   ]

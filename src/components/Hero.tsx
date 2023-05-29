@@ -11,22 +11,21 @@ export default function Hero() {
                 Olá, me chamo
               </span>
               <span className="mr-2 font-headline text-5xl font-semibold">
-                João
+                Kenneth
               </span>
               <span className="font-headline text-5xl font-light text-blue-400">
-                Henrique
+                Olusegun
               </span>
             </h1>
 
             <h2 className="mb-6 flex items-center justify-center gap-2 font-semibold md:justify-start">
               <div className="h-1 w-12 rounded-full bg-blue-800" />
-              Desenvolvedor React.js Front-end
+            Desenvolvedor Fullstack com foco em Frontend React.js
             </h2>
 
             <p className="mb-6 text-center text-gray-400 md:text-left">
-              Sou um desenvolvedor front-end que ama criar coisas para a web.
-              Atualmente trabalho como freelancer e transformo ideias em sites e
-              aplicações web.
+             Desenvolvedor Fullstack apaixonado por React: Crie experiências
+            incríveis com expertise em Frontend e Backend
             </p>
 
             <div className="flex items-center justify-center gap-2 md:justify-start">
@@ -34,11 +33,11 @@ export default function Hero() {
                 href="#contact"
                 className="underline-thickness-2 font-bold text-white underline decoration-2 underline-offset-4 transition hover:decoration-blue-700"
               >
-                Fale comigo
+              Fala comigo, que te escuto
               </a>
               <span className="italic text-gray-500">ou</span>
               <a
-                href="#"
+                href="../assets/KennethOlusegunDornellesDeJesus(en)"
                 target="_blank"
                 className="button flex items-center gap-2 text-gray-600 hover:text-gray-900"
               >

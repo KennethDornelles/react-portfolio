@@ -14,7 +14,7 @@ export default function Services() {
     },
     {
       title: "Sistemas",
-      description: "Desenvolvimento de sistemas e APIs REST com Node.js.",
+      description: "Desenvolvimento de sistemas e APIs REST/GraphQl com Node.js.",
       icon: <HiCommandLine className="h-12 w-12" />,
     },
     {
