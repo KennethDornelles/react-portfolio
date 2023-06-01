@@ -10,10 +10,10 @@ export default function Hero() {
               <span className="block font-handwriting text-3xl">
                 Olá, me chamo
               </span>
-              <span className="mr-2 font-headline text-5xl font-semibold">
+              <span className="mr-2 font-headline sm text-3xl  font-semibold">
                 Kenneth
               </span>
-              <span className="font-headline text-5xl font-light text-blue-400">
+              <span className="font-headline sm text-3xl font-light text-blue-400">
                 Olusegun
               </span>
             </h1>
@@ -37,7 +37,7 @@ export default function Hero() {
               </a>
               <span className="italic text-gray-500">ou</span>
               <a
-                href="../assets/KennethOlusegunDornellesDeJesus(en)"
+                href=""
                 target="_blank"
                 className="button flex items-center gap-2 text-gray-600 hover:text-gray-900"
               >
