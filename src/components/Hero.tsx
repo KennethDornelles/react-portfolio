@@ -10,10 +10,10 @@ export default function Hero() {
               <span className="block font-handwriting text-3xl">
                 Olá, me chamo
               </span>
-              <span className="mr-2 font-headline sm text-3xl  font-semibold">
+              <span className="mr-2 font-headline sm text-4xl  font-semibold">
                 Kenneth
               </span>
-              <span className="font-headline sm text-3xl font-light text-blue-400">
+              <span className="font-headline sm text-4xl font-light text-blue-400">
                 Olusegun
               </span>
             </h1>
