@@ -16,6 +16,35 @@ export default function Projects() {
   const [githubProjects, setGithubProjects] = useState<GithubRepo[]>([]);
   const [loading, setLoading] = useState(true);
 
+  // Para projetos que você quer destacar com imagens personalizadas
+  const featuredProjects = [
+    {
+      title: "Portfolio React",
+      description: "Site de portfólio pessoal desenvolvido com React, TypeScript e TailwindCSS",
+      image: "/images/portfolio.png",
+      link: "https://react-portfolio-apg7j4u6o-kennethdornelles-projects.vercel.app/",
+      github: "https://github.com/KennethDornelles/react-portfolio",
+      colSpan: "col-span-1 md:col-span-2",
+      technologies: ["React", "TypeScript", "Tailwind CSS", "Vite"]
+    },
+    {
+      title: "Teste Frontend JR Remoto",
+      description: "Teste técnico para a vaga remota de Frontend Developer na Instruct",
+      image: "/images/teste-frontend-jr.png", 
+      github: "https://github.com/KennethDornelles/teste-frontendr-jr-remoto-2021-04",
+      colSpan: "col-span-1",
+      technologies: ["HTML", "CSS", "JavaScript"]
+    },
+    {
+      title: "Kinvo Front-end Test",
+      description: "Teste para candidatos à vaga de Front-End",
+      image: "/images/kinvo-frontend-test.png",
+      github: "https://github.com/KennethDornelles/kinvo-front-end-test",
+      colSpan: "col-span-1",
+      technologies: ["React", "JavaScript", "CSS"]
+    }
+  ];
+
   useEffect(() => {
     // Buscar repositórios do GitHub
     async function fetchGithubProjects() {
@@ -26,11 +55,21 @@ export default function Projects() {
         
         if (response.ok) {
           const repos = await response.json();
-          // Filtrar apenas os repositórios que você quer mostrar
+          
+          // Filtrar apenas repositórios que NÃO são os projetos destacados
+          const featuredRepoNames = featuredProjects.map(fp => {
+            // Extrair o nome do repositório da URL do GitHub
+            const parts = fp.github.split('/');
+            return parts[parts.length - 1]; // Pega o último elemento
+          });
+          
           const filteredRepos = repos.filter((repo: GithubRepo) => 
-            !repo.name.includes('private') && repo.description
+            !featuredRepoNames.includes(repo.name) && 
+            repo.description && 
+            !repo.name.includes('private')
           );
-          setGithubProjects(filteredRepos.slice(0, 5));
+          
+          setGithubProjects(filteredRepos.slice(0, 3));
         }
       } catch (error) {
         console.error("Erro ao buscar projetos do GitHub:", error);
@@ -41,38 +80,6 @@ export default function Projects() {
 
     fetchGithubProjects();
   }, []);
-
-  // Para projetos que você quer destacar com imagens personalizadas
-  const featuredProjects = [
-    {
-      title: "Portfolio React",
-      description: "Site de portfólio pessoal desenvolvido com React, TypeScript e TailwindCSS",
-      image: "/images/portfolio.png",
-      link: "https://react-portfolio-ten-gules.vercel.app/", // Atualizar para a URL do Vercel
-      github: "https://github.com/KennethDornelles/react-portfolio",
-      colSpan: "col-span-1 md:col-span-2",
-      technologies: ["React", "TypeScript", "Tailwind CSS", "Vite"]
-    },
-    {
-      title: "Teste Frontend JR Remoto",
-      description: "Teste técnico para a vaga remota de Frontend Developer na Instruct",
-      image: "https://github.com/KennethDornelles/react-portfolio/blob/main/public/images/teste-frontend-jr.png?raw=true", 
-      github: "https://github.com/KennethDornelles/teste-frontendr-jr-remoto-2021-04",
-      colSpan: "col-span-1",
-      technologies: ["HTML", "CSS", "JavaScript"]
-    },
-    {
-      title: "Kinvo Front-end Test",
-      description: "Teste para candidatos à vaga de Front-End",
-      image: "https://github.com/KennethDornelles/react-portfolio/blob/main/public/images/kinvo-frontend-test.png?raw=true",
-      github: "https://github.com/KennethDornelles/kinvo-front-end-test",
-      colSpan: "col-span-1",
-      technologies: ["React", "JavaScript", "CSS"]
-    }
-  ];
-
-  // Mesclar projetos destacados com os do GitHub
-  const projects = [...featuredProjects];
 
   if (loading) {
     return (
@@ -102,7 +109,7 @@ export default function Projects() {
 
           <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
             {/* Projetos destacados */}
-            {projects.map((project, index) => (
+            {featuredProjects.map((project, index) => (
               <div
                 key={`featured-${index}`}
                 className={`group relative h-52 cursor-pointer rounded-lg ${project.colSpan} bg-cover bg-center`}
@@ -151,40 +158,42 @@ export default function Projects() {
               </div>
             ))}
             
-            {/* Projetos do GitHub */}
-            {githubProjects.map((repo) => (
-              <div
-                key={repo.id}
-                className="group relative h-52 cursor-pointer rounded-lg col-span-1 bg-gradient-to-br from-gray-800 to-gray-900 p-4"
-              >
-                <h4 className="font-headline text-lg font-semibold text-blue-400">{repo.name}</h4>
-                <p className="mb-4 text-sm line-clamp-3 text-gray-300">{repo.description || "Sem descrição disponível"}</p>
+            {/* Outros projetos do GitHub - NÃO mostrar aqui, apenas se você quiser exibi-los abaixo dos destacados */}
+            {githubProjects.length > 0 && (
+              <>
+                <div className="col-span-1 md:col-span-3 mt-8">
+                  <h3 className="text-xl font-semibold text-white mb-4">Outros Projetos</h3>
+                </div>
                 
-                <div className="absolute bottom-4 left-4 right-4">
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs bg-gray-700 rounded px-2 py-1">{repo.language || "N/A"}</span>
-                    <div className="flex gap-2">
-                      <a href={repo.html_url} target="_blank" rel="noopener noreferrer" className="hover:text-blue-400">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                        </svg>
-                      </a>
-                      {repo.homepage && (
-                        <a href={repo.homepage} target="_blank" rel="noopener noreferrer" className="hover:text-blue-400">
-                          <HiArrowTopRightOnSquare className="h-5 w-5" />
-                        </a>
-                      )}
+                {githubProjects.map((repo) => (
+                  <div
+                    key={repo.id}
+                    className="group relative h-40 cursor-pointer rounded-lg col-span-1 bg-gradient-to-br from-gray-800 to-gray-900 p-4"
+                  >
+                    <h4 className="font-headline text-lg font-semibold text-blue-400">{repo.name}</h4>
+                    <p className="mb-4 text-sm line-clamp-3 text-gray-300">{repo.description || "Sem descrição disponível"}</p>
+                    
+                    <div className="absolute bottom-4 left-4 right-4">
+                      <div className="flex items-center justify-between">
+                        <span className="text-xs bg-gray-700 rounded px-2 py-1">{repo.language || "N/A"}</span>
+                        <div className="flex gap-2">
+                          <a href={repo.html_url} target="_blank" rel="noopener noreferrer" className="hover:text-blue-400">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                          </a>
+                          {repo.homepage && (
+                            <a href={repo.homepage} target="_blank" rel="noopener noreferrer" className="hover:text-blue-400">
+                              <HiArrowTopRightOnSquare className="h-5 w-5" />
+                            </a>
+                          )}
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div className="absolute top-4 right-4 flex items-center text-xs text-yellow-400">
-                  <svg className="h-4 w-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                  </svg>
-                  {repo.stargazers_count}
-                </div>
-              </div>
-            ))}
+                ))}
+              </>
+            )}
           </div>
         </div>
       </section>
