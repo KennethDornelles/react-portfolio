@@ -37,11 +37,13 @@ export default function Hero() {
               </a>
               <span className="italic text-gray-500">ou</span>
               <a
-                href=""
+                href="https://drive.google.com/uc?export=download&id=1OfjHn5TDG8-S0A00chTDq5Npbly4Xvzk"
                 target="_blank"
-                className="button flex items-center gap-2 text-gray-600 hover:text-gray-900"
+                rel="noopener noreferrer"
+                className="button flex items-center gap-2 bg-white px-4 py-2 rounded-lg text-gray-600 hover:text-gray-900 transition-colors"
+                download="Kenneth_Olusegun_CV.pdf"
               >
-                <HiDownload />
+                <HiDownload className="text-blue-600" />
                 Baixe meu CV
               </a>
             </div>
