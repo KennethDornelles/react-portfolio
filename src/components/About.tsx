@@ -95,7 +95,7 @@ export default function About() {
             </table>
           </div>
           <div className="absolute -left-2 -top-4 h-24 w-20 rounded-lg bg-gray-600 bg-cover bg-center md:-left-12 md:-top-12 md:h-72 md:w-56" 
-               style={{ backgroundImage: `url("https://github.com/KennethDornelles/react-portfolio/blob/main/public/images/eu.png?raw=true")` }}>
+               style={{ backgroundImage: `url("/images/eu.png")` }}>
           </div>
         </div>
       </div>

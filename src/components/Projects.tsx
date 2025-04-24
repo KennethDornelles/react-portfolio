@@ -47,8 +47,8 @@ export default function Projects() {
     {
       title: "Portfolio React",
       description: "Site de portfólio pessoal desenvolvido com React, TypeScript e TailwindCSS",
-      image: "https://github.com/KennethDornelles/react-portfolio/blob/main/public/images/portfolio.png?raw=true",
-      link: "https://kennethdornelles.github.io/react-portfolio/",
+      image: "/images/portfolio.png",
+      link: "https://react-portfolio-ten-gules.vercel.app/", // Atualizar para a URL do Vercel
       github: "https://github.com/KennethDornelles/react-portfolio",
       colSpan: "col-span-1 md:col-span-2",
       technologies: ["React", "TypeScript", "Tailwind CSS", "Vite"]
