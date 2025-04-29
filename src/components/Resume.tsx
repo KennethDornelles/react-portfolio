@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import Timeline from './resume/Timeline';
@@ -10,18 +10,6 @@ import { Education, Experience } from '../types/resume';
 const Resume: React.FC = () => {
   const { t } = useTranslation();
   const [activeTab, setActiveTab] = useState<'experience' | 'education'>('experience');
-  const [isMobile, setIsMobile] = useState(false);
-
-  // Detecta se é um dispositivo móvel
-  useEffect(() => {
-    const checkIfMobile = () => {
-      const userAgent = navigator.userAgent || navigator.vendor || (window as any).opera;
-      const mobileRegex = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
-      setIsMobile(mobileRegex.test(userAgent));
-    };
-
-    checkIfMobile();
-  }, []);
 
   // Dados do currículo usando sistema de tradução
   const experiences: Experience[] = [
@@ -192,54 +180,9 @@ const Resume: React.FC = () => {
   ]
 }`;
 
-  // Caminho para o PDF no sistema de arquivos públicos
+  // Usando URL direto para contornar problemas de roteamento do SPA
+  const pdfUrl = 'https://raw.githubusercontent.com/kdujesus/portfolio-assets/main/kenneth_olusegun_cv.pdf';
   const pdfFileName = 'kenneth_olusegun_cv.pdf';
-  const pdfPath = `/assets/${pdfFileName}`;
-
-  // Função para baixar o PDF usando fetch para obter o arquivo diretamente (para desktop)
-  const downloadPdf = useCallback(async (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
-    // Se for mobile, deixa o comportamento padrão do link funcionar
-    if (isMobile) return;
-
-    // Para desktop, previne o comportamento padrão e usa a abordagem com fetch
-    e.preventDefault();
-    try {
-      console.log('Iniciando download do currículo (desktop)...');
-
-      // Faz o fetch do arquivo como blob
-      const response = await fetch(pdfPath);
-      if (!response.ok) {
-        throw new Error('Falha ao baixar o arquivo');
-      }
-
-      // Converte a resposta para blob
-      const blob = await response.blob();
-
-      // Cria um URL para o blob
-      const url = window.URL.createObjectURL(blob);
-
-      // Cria um elemento de link temporário
-      const link = document.createElement('a');
-      link.href = url;
-      link.setAttribute('download', pdfFileName);
-
-      // Anexa o link ao documento
-      document.body.appendChild(link);
-
-      // Clica no link para iniciar o download
-      link.click();
-
-      // Limpa removendo o link e revogando o URL do objeto
-      document.body.removeChild(link);
-      window.URL.revokeObjectURL(url);
-
-    } catch (error) {
-      console.error('Erro ao baixar o PDF:', error);
-
-      // Fallback: tenta abrir o PDF em uma nova aba
-      window.open(pdfPath, '_blank');
-    }
-  }, [pdfPath, isMobile]);
 
   return (
     <AnimatedSection id="resume" className="py-20">
@@ -324,12 +267,11 @@ const Resume: React.FC = () => {
                 {t('resume.downloadDescription')}
               </p>
               <a
-                href={pdfPath}
+                href={pdfUrl}
                 className="inline-flex items-center px-4 py-2 bg-primary-600 hover:bg-primary-700 text-white rounded-md transition-colors"
                 download={pdfFileName}
-                onClick={downloadPdf}
-                target={isMobile ? '_blank' : undefined}
-                rel={isMobile ? 'noreferrer' : undefined}
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 {t('resume.downloadButton')}
               </a>

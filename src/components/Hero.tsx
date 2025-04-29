@@ -1,71 +1,12 @@
 import { useTranslation } from 'react-i18next'
 import { HiArrowRight, HiDownload } from 'react-icons/hi'
-import { useCallback, useEffect, useState } from 'react'
 
 export default function Hero() {
   const { t } = useTranslation()
-  const [isMobile, setIsMobile] = useState(false);
 
-  // Caminho para o PDF no sistema de arquivos públicos
-  const pdfFileName = 'kenneth_olusegun_cv.pdf';
-  const pdfPath = `/assets/${pdfFileName}`;
-
-  // Detecta se é um dispositivo móvel
-  useEffect(() => {
-    const checkIfMobile = () => {
-      const userAgent = navigator.userAgent || navigator.vendor || (window as any).opera;
-      const mobileRegex = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
-      setIsMobile(mobileRegex.test(userAgent));
-    };
-
-    checkIfMobile();
-    // Não precisamos de event listener para resize pois o tipo de dispositivo não vai mudar durante o uso
-  }, []);
-
-  // Função para baixar o PDF usando fetch para obter o arquivo diretamente (para desktop)
-  const downloadPdf = useCallback(async (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
-    // Se for mobile, deixa o comportamento padrão do link funcionar
-    if (isMobile) return;
-
-    // Para desktop, previne o comportamento padrão e usa a abordagem com fetch
-    e.preventDefault();
-    try {
-      console.log('Iniciando download do currículo (desktop)...');
-
-      // Faz o fetch do arquivo como blob
-      const response = await fetch(pdfPath);
-      if (!response.ok) {
-        throw new Error('Falha ao baixar o arquivo');
-      }
-
-      // Converte a resposta para blob
-      const blob = await response.blob();
-
-      // Cria um URL para o blob
-      const url = window.URL.createObjectURL(blob);
-
-      // Cria um elemento de link temporário
-      const link = document.createElement('a');
-      link.href = url;
-      link.setAttribute('download', pdfFileName);
-
-      // Anexa o link ao documento
-      document.body.appendChild(link);
-
-      // Clica no link para iniciar o download
-      link.click();
-
-      // Limpa removendo o link e revogando o URL do objeto
-      document.body.removeChild(link);
-      window.URL.revokeObjectURL(url);
-
-    } catch (error) {
-      console.error('Erro ao baixar o PDF:', error);
-
-      // Fallback: tenta abrir o PDF em uma nova aba
-      window.open(pdfPath, '_blank');
-    }
-  }, [pdfPath, isMobile]);
+  // Usando URL direto para contornar problemas de roteamento do SPA
+  // Esta é uma URL para um serviço de armazenamento público
+  const pdfUrl = 'https://raw.githubusercontent.com/kdujesus/portfolio-assets/main/kenneth_olusegun_cv.pdf';
 
   return (
     <>
@@ -99,12 +40,11 @@ export default function Hero() {
                 {t('hero.or')}
               </span>
               <a
-                href={pdfPath}
+                href={pdfUrl}
                 className="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 rounded-md transition-colors"
-                download={pdfFileName}
-                onClick={downloadPdf}
-                target={isMobile ? '_blank' : undefined}
-                rel={isMobile ? 'noreferrer' : undefined}
+                download="kenneth_olusegun_cv.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <HiDownload className="text-blue-600" />
                 {t('hero.download')}
