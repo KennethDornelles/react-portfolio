@@ -184,7 +184,7 @@ const Resume: React.FC = () => {
 }`;
 
   // Para o ambiente Vercel, temos que garantir que o caminho está correto
-  const pdfFilePath = `${import.meta.env.BASE_URL || '/'}assets/KENNETH OLUSEGUN.pdf`;
+  const pdfFilePath = '/assets/kenneth_olusegun_cv.pdf';
 
   return (
     <AnimatedSection id="resume" className="py-20">
@@ -270,7 +270,7 @@ const Resume: React.FC = () => {
               </p>
               <a
                 href={pdfFilePath}
-                download="KENNETH_OLUSEGUN.pdf"
+                download="kenneth_olusegun_cv.pdf"
                 className="inline-flex items-center px-4 py-2 bg-primary-600 hover:bg-primary-700 text-white rounded-md transition-colors"
               >
                 {t('resume.downloadButton')}

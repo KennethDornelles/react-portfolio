@@ -41,7 +41,7 @@ export default function Hero() {
               <a
                 href={pdfFilePath}
                 className="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 rounded-md transition-colors"
-                download="Kenneth_Olusegun_CV.pdf"
+                download="kenneth_olusegun_cv.pdf"
               >
                 <HiDownload className="text-blue-600" />
                 {t('hero.download')}
