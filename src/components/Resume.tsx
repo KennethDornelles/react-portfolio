@@ -7,87 +7,114 @@ import CodeBlock from './code/CodeBlock';
 import { HiAcademicCap, HiBriefcase, HiDocumentText } from 'react-icons/hi2';
 import { Education, Experience } from '../types/resume';
 
-// Import your actual resume PDF
-import resumePdf from '../assets/KENNETH_OLUSEGUN.pdf';
+// Import your actual resume PDF - Corrected filename
+import resumePdf from '../assets/KENNETH OLUSEGUN.pdf';
 
 const Resume: React.FC = () => {
   const { t } = useTranslation();
   const [activeTab, setActiveTab] = useState<'experience' | 'education'>('experience');
 
-  // Dados reais do currículo
+  // Dados do currículo usando sistema de tradução
   const experiences: Experience[] = [
     {
       id: 'exp1',
-      company: 'Unimed João Pessoa',
-      position: 'Estagiário Desenv Sistema',
-      startDate: 'January 2025',
+      company: t('resume.experience.company1'),
+      position: t('resume.experience.position1'),
+      startDate: t('resume.experience.startDate1'),
       endDate: null,
-      description: 'Organizar arquivos de programas, acompanhamento supervisionado na elaboração de relatórios da área administrativa, levantamento de requisitos e documentação, desenvolvimento SQL/PL/SQL, Procedure, Functions, Oracle Apex e geração de relatórios a partir do Banco de Dados (SQL).',
-      location: 'João Pessoa, Brasil',
-      technologies: ['SQL', 'PL/SQL', 'Oracle Apex', 'Procedures', 'Functions']
+      description: t('resume.experience.description1'),
+      location: t('resume.experience.location1'),
+      technologies: [
+        t('resume.experience.technology1.1'),
+        t('resume.experience.technology1.2'),
+        t('resume.experience.technology1.3'),
+        t('resume.experience.technology1.4'),
+        t('resume.experience.technology1.5')
+      ]
     },
     {
       id: 'exp2',
-      company: 'Lojas Renner SA',
-      position: 'Analista de TI - Suporte Técnico',
-      startDate: 'January 2024',
-      endDate: 'December 2024',
-      description: 'Fornecimento de suporte técnico aos usuários, resolução de problemas de hardware e software. Gerenciamento e monitoramento de redes, instalação e configuração de sistemas operacionais e aplicativos. Treinamento de usuários em novas tecnologias e participação em projetos de atualização de infraestrutura de TI.',
-      location: 'Brasil',
-      technologies: ['Hardware', 'Software', 'Redes', 'Sistemas Operacionais']
+      company: t('resume.experience.company2'),
+      position: t('resume.experience.position2'),
+      startDate: t('resume.experience.startDate2'),
+      endDate: t('resume.experience.endDate2'),
+      description: t('resume.experience.description2'),
+      location: t('resume.experience.location2'),
+      technologies: [
+        t('resume.experience.technology2.1'),
+        t('resume.experience.technology2.2'),
+        t('resume.experience.technology2.3'),
+        t('resume.experience.technology2.4')
+      ]
     },
     {
       id: 'exp3',
-      company: 'Bluecore.It',
-      position: 'Desenvolvedor Fullstack',
-      startDate: 'February 2023',
-      endDate: 'December 2023',
-      description: 'Projetou, desenvolveu e implementou soluções de software para clientes de diferentes setores. Trabalhou com tecnologias como HTML, CSS, JavaScript, React, Node.js e bancos de dados relacionais e não-relacionais. Participação em reuniões com clientes para entender as necessidades e oferecer suporte técnico.',
-      location: 'Brasil',
-      technologies: ['HTML', 'CSS', 'JavaScript', 'React', 'Node.js', 'Banco de Dados']
+      company: t('resume.experience.company3'),
+      position: t('resume.experience.position3'),
+      startDate: t('resume.experience.startDate3'),
+      endDate: t('resume.experience.endDate3'),
+      description: t('resume.experience.description3'),
+      location: t('resume.experience.location3'),
+      technologies: [
+        t('resume.experience.technology3.1'),
+        t('resume.experience.technology3.2'),
+        t('resume.experience.technology3.3'),
+        t('resume.experience.technology3.4'),
+        t('resume.experience.technology3.5'),
+        t('resume.experience.technology3.6')
+      ]
     },
     {
       id: 'exp4',
-      company: 'Arezzo&Co',
-      position: 'Estagiário de Agilidade',
-      startDate: 'October 2022',
-      endDate: 'February 2023',
-      description: 'Auxiliou na implementação de metodologias ágeis, participando de reuniões e treinamentos sobre Scrum e Kanban. Criação e manutenção de quadros Kanban, suporte à equipe na resolução de impedimentos e trabalho sob prazos apertados.',
-      location: 'Brasil',
-      technologies: ['Scrum', 'Kanban', 'Metodologias Ágeis']
+      company: t('resume.experience.company4'),
+      position: t('resume.experience.position4'),
+      startDate: t('resume.experience.startDate4'),
+      endDate: t('resume.experience.endDate4'),
+      description: t('resume.experience.description4'),
+      location: t('resume.experience.location4'),
+      technologies: [
+        t('resume.experience.technology4.1'),
+        t('resume.experience.technology4.2'),
+        t('resume.experience.technology4.3')
+      ]
     },
     {
       id: 'exp5',
-      company: 'PurpleCats',
-      position: 'Desenvolvedor Backend',
-      startDate: 'March 2022',
-      endDate: 'December 2023',
-      description: 'Projetou e implementou soluções de software escaláveis e de alta qualidade. Desenvolveu e manteve sistemas de gerenciamento de conteúdo, APIs e aplicativos web. Participação em testes e depuração de código para garantir a qualidade final.',
-      location: 'Brasil',
-      technologies: ['Backend', 'APIs', 'Desenvolvimento Web', 'Testes']
+      company: t('resume.experience.company5'),
+      position: t('resume.experience.position5'),
+      startDate: t('resume.experience.startDate5'),
+      endDate: t('resume.experience.endDate5'),
+      description: t('resume.experience.description5'),
+      location: t('resume.experience.location5'),
+      technologies: [
+        t('resume.experience.technology5.1'),
+        t('resume.experience.technology5.2'),
+        t('resume.experience.technology5.3'),
+        t('resume.experience.technology5.4')
+      ]
     }
   ];
 
   const educations: Education[] = [
     {
       id: 'edu1',
-      institution: 'Unicesumar',
-      degree: 'Bacharel',
-      field: 'Engenharia de Software',
-      startDate: 'January 2024',
+      institution: t('resume.education.institution1'),
+      degree: t('resume.education.degree1'),
+      field: t('resume.education.field1'),
+      startDate: t('resume.education.startDate1'),
       endDate: null,
-      description: 'Cursando Engenharia de Software.',
-      location: 'Brasil'
+      description: t('resume.education.description1'),
+      location: t('resume.education.location1')
     },
     {
       id: 'edu2',
-      institution: 'Multivix',
-      degree: 'Tecnólogo',
-      field: 'Análise e Desenvolvimento de Sistemas',
-      startDate: 'January 2024',
+      institution: t('resume.education.institution2'),
+      degree: t('resume.education.degree2'),
+      field: t('resume.education.field2'),
+      startDate: t('resume.education.startDate2'),
       endDate: null,
-      description: 'Cursando Análise e Desenvolvimento de Sistemas.',
-      location: 'Brasil'
+      description: t('resume.education.description2'),
+      location: t('resume.education.location2')
     }
   ];
 
@@ -174,8 +201,8 @@ const Resume: React.FC = () => {
               type="button"
               onClick={() => setActiveTab('experience')}
               className={`inline-flex items-center gap-2 px-4 py-3 rounded-l-lg ${activeTab === 'experience'
-                  ? 'bg-primary-600 text-white'
-                  : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
+                ? 'bg-primary-600 text-white'
+                : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
                 }`}
             >
               <HiBriefcase className="h-5 w-5" />
@@ -185,8 +212,8 @@ const Resume: React.FC = () => {
               type="button"
               onClick={() => setActiveTab('education')}
               className={`inline-flex items-center gap-2 px-4 py-3 rounded-r-lg ${activeTab === 'education'
-                  ? 'bg-primary-600 text-white'
-                  : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
+                ? 'bg-primary-600 text-white'
+                : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
                 }`}
             >
               <HiAcademicCap className="h-5 w-5" />
@@ -240,7 +267,7 @@ const Resume: React.FC = () => {
               </p>
               <a
                 href={resumePdf}
-                download="Kenneth_Olusegun_Resume.pdf"
+                download="KENNETH_OLUSEGUN.pdf"
                 className="inline-flex items-center px-4 py-2 bg-primary-600 hover:bg-primary-700 text-white rounded-md transition-colors"
               >
                 {t('resume.downloadButton')}
