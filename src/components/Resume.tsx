@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import Timeline from './resume/Timeline';
@@ -6,9 +6,6 @@ import AnimatedSection from './AnimatedSection';
 import CodeBlock from './code/CodeBlock';
 import { HiAcademicCap, HiBriefcase, HiDocumentText } from 'react-icons/hi2';
 import { Education, Experience } from '../types/resume';
-
-// Não importamos o PDF diretamente, usaremos URL direta para a pasta public
-// O arquivo PDF deve estar em public/assets/
 
 const Resume: React.FC = () => {
   const { t } = useTranslation();
@@ -183,23 +180,52 @@ const Resume: React.FC = () => {
   ]
 }`;
 
-  // Usando link direto para o PDF sem usar window.location.origin
-  // Isso evita problemas com o SPA router do React
-  const pdfFilePath = 'https://react-portfolio-ten-gules.vercel.app/assets/kenneth_olusegun_cv.pdf';
-  
-  // Função para forçar o download do PDF
-  const forceDownload = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+  // Caminho para o PDF no sistema de arquivos públicos
+  const pdfFileName = 'kenneth_olusegun_cv.pdf';
+  const pdfPath = `/assets/${pdfFileName}`;
+
+  // Função para baixar o PDF usando fetch para obter o arquivo diretamente
+  const downloadPdf = useCallback(async (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
     e.preventDefault();
-    
-    // Criando um elemento a temporário para forçar o download
-    const link = document.createElement('a');
-    link.href = pdfFilePath;
-    link.download = 'kenneth_olusegun_cv.pdf';
-    link.target = '_blank';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
+    try {
+      // Exibe um indicador de loading se desejar
+      console.log('Iniciando download do currículo...');
+      
+      // Faz o fetch do arquivo como blob
+      const response = await fetch(pdfPath);
+      if (!response.ok) {
+        throw new Error('Falha ao baixar o arquivo');
+      }
+      
+      // Converte a resposta para blob
+      const blob = await response.blob();
+      
+      // Cria um URL para o blob
+      const url = window.URL.createObjectURL(blob);
+      
+      // Cria um elemento de link temporário
+      const link = document.createElement('a');
+      link.href = url;
+      link.setAttribute('download', pdfFileName);
+      
+      // Anexa o link ao documento
+      document.body.appendChild(link);
+      
+      // Clica no link para iniciar o download
+      link.click();
+      
+      // Limpa removendo o link e revogando o URL do objeto
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(url);
+      
+    } catch (error) {
+      console.error('Erro ao baixar o PDF:', error);
+      // Você pode adicionar uma notificação de erro aqui se desejar
+      
+      // Fallback: tenta abrir o PDF em uma nova aba
+      window.open(pdfPath, '_blank');
+    }
+  }, [pdfPath]);
 
   return (
     <AnimatedSection id="resume" className="py-20">
@@ -284,9 +310,9 @@ const Resume: React.FC = () => {
                 {t('resume.downloadDescription')}
               </p>
               <a
-                href={pdfFilePath}
+                href={pdfPath}
                 className="inline-flex items-center px-4 py-2 bg-primary-600 hover:bg-primary-700 text-white rounded-md transition-colors"
-                onClick={forceDownload}
+                onClick={downloadPdf}
               >
                 {t('resume.downloadButton')}
               </a>
