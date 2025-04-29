@@ -144,11 +144,11 @@ const ptBR = {
     "resume.experience.technology5.4": "Testes",
     
     // Education translations
-    "resume.education.institution1": "Universidade Federal da Paraíba",
-    "resume.education.degree1": "Bacharelado em Ciência da Computação",
-    "resume.education.field1": "Ciência da Computação",
-    "resume.education.startDate1": "Jan 2021",
-    "resume.education.description1": "Cursando bacharelado em Ciência da Computação, com foco em desenvolvimento de software, estruturas de dados, algoritmos e sistemas distribuídos. Participação em projetos de pesquisa e desenvolvimento de aplicações web.",
+    "resume.education.institution1": "Unicesumar",
+    "resume.education.degree1": "Bacharelado em Engenharia de Software",
+    "resume.education.field1": "Engenharia de Software",
+    "resume.education.startDate1": "Jan 2024",
+    "resume.education.description1": "Cursando Engenharia de Software, com foco em desenvolvimento de software, estruturas de dados, algoritmos e sistemas distribuídos. Participação em projetos de pesquisa e desenvolvimento de aplicações web.",
     "resume.education.location1": "João Pessoa, PB",
     
     "resume.education.institution2": "Cod3r Cursos Online",
