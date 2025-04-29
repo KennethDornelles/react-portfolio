@@ -1,20 +1,36 @@
 import { useTranslation } from 'react-i18next'
 import { HiArrowRight, HiDownload } from 'react-icons/hi'
-import { useCallback } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 
 export default function Hero() {
   const { t } = useTranslation()
+  const [isMobile, setIsMobile] = useState(false);
 
   // Caminho para o PDF no sistema de arquivos públicos
   const pdfFileName = 'kenneth_olusegun_cv.pdf';
   const pdfPath = `/assets/${pdfFileName}`;
 
-  // Função para baixar o PDF usando fetch para obter o arquivo diretamente
+  // Detecta se é um dispositivo móvel
+  useEffect(() => {
+    const checkIfMobile = () => {
+      const userAgent = navigator.userAgent || navigator.vendor || (window as any).opera;
+      const mobileRegex = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
+      setIsMobile(mobileRegex.test(userAgent));
+    };
+
+    checkIfMobile();
+    // Não precisamos de event listener para resize pois o tipo de dispositivo não vai mudar durante o uso
+  }, []);
+
+  // Função para baixar o PDF usando fetch para obter o arquivo diretamente (para desktop)
   const downloadPdf = useCallback(async (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+    // Se for mobile, deixa o comportamento padrão do link funcionar
+    if (isMobile) return;
+
+    // Para desktop, previne o comportamento padrão e usa a abordagem com fetch
     e.preventDefault();
     try {
-      // Exibe um indicador de loading se desejar
-      console.log('Iniciando download do currículo...');
+      console.log('Iniciando download do currículo (desktop)...');
 
       // Faz o fetch do arquivo como blob
       const response = await fetch(pdfPath);
@@ -45,12 +61,11 @@ export default function Hero() {
 
     } catch (error) {
       console.error('Erro ao baixar o PDF:', error);
-      // Você pode adicionar uma notificação de erro aqui se desejar
 
       // Fallback: tenta abrir o PDF em uma nova aba
       window.open(pdfPath, '_blank');
     }
-  }, [pdfPath]);
+  }, [pdfPath, isMobile]);
 
   return (
     <>
@@ -86,7 +101,10 @@ export default function Hero() {
               <a
                 href={pdfPath}
                 className="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 rounded-md transition-colors"
+                download={pdfFileName}
                 onClick={downloadPdf}
+                target={isMobile ? '_blank' : undefined}
+                rel={isMobile ? 'noreferrer' : undefined}
               >
                 <HiDownload className="text-blue-600" />
                 {t('hero.download')}
