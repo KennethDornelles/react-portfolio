@@ -5,7 +5,8 @@ export default function Hero() {
   const { t } = useTranslation()
 
   // Usando o arquivo com nome sem espaços para evitar problemas de URL
-  const pdfFilePath = '/assets/kenneth_olusegun_cv.pdf';
+  // Usando caminho absoluto completo para garantir que o download funcione no Vercel
+  const pdfFilePath = `${window.location.origin}/assets/kenneth_olusegun_cv.pdf`;
 
   return (
     <>
@@ -42,6 +43,8 @@ export default function Hero() {
                 href={pdfFilePath}
                 className="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 rounded-md transition-colors"
                 download="kenneth_olusegun_cv.pdf"
+                target="_blank"
+                rel="noreferrer"
               >
                 <HiDownload className="text-blue-600" />
                 {t('hero.download')}
