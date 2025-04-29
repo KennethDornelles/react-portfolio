@@ -183,8 +183,23 @@ const Resume: React.FC = () => {
   ]
 }`;
 
-  // Para o ambiente Vercel, usando o caminho absoluto completo
-  const pdfFilePath = `${window.location.origin}/assets/kenneth_olusegun_cv.pdf`;
+  // Usando link direto para o PDF sem usar window.location.origin
+  // Isso evita problemas com o SPA router do React
+  const pdfFilePath = 'https://react-portfolio-ten-gules.vercel.app/assets/kenneth_olusegun_cv.pdf';
+  
+  // Função para forçar o download do PDF
+  const forceDownload = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+    e.preventDefault();
+    
+    // Criando um elemento a temporário para forçar o download
+    const link = document.createElement('a');
+    link.href = pdfFilePath;
+    link.download = 'kenneth_olusegun_cv.pdf';
+    link.target = '_blank';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   return (
     <AnimatedSection id="resume" className="py-20">
@@ -270,10 +285,8 @@ const Resume: React.FC = () => {
               </p>
               <a
                 href={pdfFilePath}
-                download="kenneth_olusegun_cv.pdf"
-                target="_blank"
-                rel="noreferrer"
                 className="inline-flex items-center px-4 py-2 bg-primary-600 hover:bg-primary-700 text-white rounded-md transition-colors"
+                onClick={forceDownload}
               >
                 {t('resume.downloadButton')}
               </a>

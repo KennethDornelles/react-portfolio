@@ -4,9 +4,22 @@ import { HiArrowRight, HiDownload } from 'react-icons/hi'
 export default function Hero() {
   const { t } = useTranslation()
 
-  // Usando o arquivo com nome sem espaços para evitar problemas de URL
-  // Usando caminho absoluto completo para garantir que o download funcione no Vercel
-  const pdfFilePath = `${window.location.origin}/assets/kenneth_olusegun_cv.pdf`;
+  // Usando link direto para o PDF sem usar window.location.origin
+  const pdfFilePath = 'https://react-portfolio-ten-gules.vercel.app/assets/kenneth_olusegun_cv.pdf';
+
+  // Função para forçar o download do PDF
+  const forceDownload = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+    e.preventDefault();
+
+    // Criando um elemento a temporário para forçar o download
+    const link = document.createElement('a');
+    link.href = pdfFilePath;
+    link.download = 'kenneth_olusegun_cv.pdf';
+    link.target = '_blank';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   return (
     <>
@@ -42,9 +55,7 @@ export default function Hero() {
               <a
                 href={pdfFilePath}
                 className="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 rounded-md transition-colors"
-                download="kenneth_olusegun_cv.pdf"
-                target="_blank"
-                rel="noreferrer"
+                onClick={forceDownload}
               >
                 <HiDownload className="text-blue-600" />
                 {t('hero.download')}
