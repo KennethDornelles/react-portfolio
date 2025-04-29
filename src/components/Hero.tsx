@@ -1,48 +1,46 @@
-import { HiDownload } from "react-icons/hi"
 import { useTranslation } from 'react-i18next'
+import { HiArrowRight, HiDownload } from 'react-icons/hi'
 
 export default function Hero() {
-  const { t } = useTranslation();
+  const { t } = useTranslation()
+  
+  // Para o ambiente Vercel, temos que garantir que o caminho está correto
+  const pdfFilePath = `${import.meta.env.BASE_URL || '/'}assets/KENNETH OLUSEGUN.pdf`;
 
   return (
     <>
-      <section className="rounded-br-[80px] bg-gradient-to-tr from-black to-gray-900 text-white md:rounded-br-[180px]">
-        <div className="container mx-auto flex max-w-4xl flex-col-reverse p-4 py-12 md:flex-row">
+      <section
+        className="min-h-[calc(100vh-80px)] relative overflow-hidden flex flex-col justify-center py-20"
+        id="home"
+      >
+        <div className="container px-4 mx-auto grid grid-cols-1 md:grid-cols-2 items-center">
           <div className="basis-1/2">
-            <h1 className="mb-6 text-center md:text-left">
-              <span className="block font-handwriting text-3xl">
-                {t('hero.greeting')}
-              </span>
-              <span className="mr-2 font-headline sm text-4xl  font-semibold">
-                Kenneth
-              </span>
-              <span className="font-headline sm text-4xl font-light text-blue-400">
-                Olusegun
-              </span>
+            <span className="inline-block text-primary-700 font-medium mb-1">
+              {t('hero.greeting')}
+            </span>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
+              Kenneth Olusegun
             </h1>
-
-            <h2 className="mb-6 flex items-center justify-center gap-2 font-semibold md:justify-start">
-              <div className="h-1 w-12 rounded-full bg-blue-800" />
+            <h2 className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 mb-8">
               {t('hero.role')}
             </h2>
-
-            <p className="mb-6 text-center text-gray-400 md:text-left">
+            <p className="text-gray-600 dark:text-gray-400 max-w-md mb-8">
               {t('hero.description')}
             </p>
-
-            <div className="flex items-center justify-center gap-2 md:justify-start">
+            <div className="flex gap-3 flex-wrap">
               <a
                 href="#contact"
-                className="underline-thickness-2 font-bold text-white underline decoration-2 underline-offset-4 transition hover:decoration-blue-700"
+                className="inline-flex items-center gap-2 px-4 py-2 bg-primary-700 hover:bg-primary-800 text-white rounded-md transition-colors"
               >
                 {t('hero.talk')}
+                <HiArrowRight />
               </a>
-              <span className="italic text-gray-500">{t('hero.or')}</span>
+              <span className="px-2 flex items-center text-gray-500">
+                {t('hero.or')}
+              </span>
               <a
-                href="https://drive.google.com/file/d/1Bq6TSWhhbB3aHTy6Ps-fzFnK8zTJjCbK/view?usp=drive_link"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="button flex items-center gap-2 bg-white px-4 py-2 rounded-lg text-gray-600 hover:text-gray-900 transition-colors"
+                href={pdfFilePath}
+                className="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 rounded-md transition-colors"
                 download="Kenneth_Olusegun_CV.pdf"
               >
                 <HiDownload className="text-blue-600" />
