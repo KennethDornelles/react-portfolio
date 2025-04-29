@@ -1,61 +1,64 @@
 import { HiAcademicCap, HiCodeBracketSquare } from "react-icons/hi2"
+import { useTranslation } from "react-i18next"
 
 export default function Skills() {
+  const { t } = useTranslation()
+
   const educations = [
     {
-      name: "Curso de Desenvolvimento Web Full Stack | Cod3r Cursos",
+      name: t('courses.webdev'),
     },
     {
-      name: "Curso de Desenvolvimento React-Native | Cod3r Cursos",
+      name: t('courses.reactnative'),
     },
     {
-      name: "Curso de Typescript | Matheus Battisti"
+      name: t('courses.typescript')
     }
   ]
 
   const skills = [
     {
-      name: "HTML5/CSS3",
+      name: t('skills.html'),
       icon: "images/html.svg",
       level: 95,
     },
     {
-      name: "JavaScript",
+      name: t('skills.js'),
       icon: "images/javascript.svg",
       level: 90,
     },
     {
-      name: "React.js",
+      name: t('skills.react'),
       icon: "images/react.svg",
       level: 85,
     },
     {
-      name: "Node.js",
+      name: t('skills.node'),
       icon: "images/nodejs.svg",
       level: 90,
     },
     {
-      name: "GraphQL",
+      name: t('skills.graphql'),
       icon: "/images/graphql.svg",
       level: 60,
     },
     {
-      name: "PrismaORM",
+      name: t('skills.prisma'),
       icon: "images/prisma.svg",
       level: 55,
     },
     {
-      name: "PostgreSQL",
+      name: t('skills.postgres'),
       icon: "images/postgres.png",
       level: 80,
     },
     {
-      name: "Docker",
+      name: t('skills.docker'),
       icon: "images/docker.png",
       level: 60,
     },
     {
-      name: "MongoDB",
+      name: t('skills.mongodb'),
       icon: "images/mongo.svg",
       level: 60,
     },
@@ -67,14 +70,11 @@ export default function Skills() {
         <div className="relative mb-10 p-4 text-center">
           <h2 className="relative z-10 mb-4">
             <span className="mr-2 font-headline text-3xl font-bold text-gray-800">
-              Educação &
-            </span>
-            <span className="font-handwriting text-4xl text-blue-800">
-              Skills
+              {t('skills.education')}
             </span>
           </h2>
           <p className="relative mx-auto max-w-2xl text-base text-gray-700">
-            Fullstack Developer | React.js | React Native | Node.js | TypeScript
+            {t('skills.fullstack')} | React.js | React Native | Node.js | TypeScript
             | JavaScript | GraphQL | TypeORM | PrismaORM | PostgreSQL | Docker | MongoDB
           </p>
           <div className="absolute left-1/2 top-3 z-0 h-10 w-10 -translate-x-1/2 rounded-lg bg-blue-400/10" />
@@ -84,7 +84,7 @@ export default function Skills() {
           <div className="basis-1/2">
             <h3 className="mb-6 flex items-center gap-3 text-xl font-bold text-gray-700">
               <HiAcademicCap className="h-8 w-8 text-blue-600" />
-              Educação
+              {t('courses.title')}
             </h3>
 
             <div className="space-y-4">
@@ -102,7 +102,7 @@ export default function Skills() {
           <div className="basis-1/2">
             <h3 className="mb-6 flex items-center gap-3 text-xl font-bold text-gray-700">
               <HiCodeBracketSquare className="h-8 w-8 text-blue-600" />
-              Skills
+              {t('skills.title')}
             </h3>
 
             <div className="grid grid-cols-2 gap-6">

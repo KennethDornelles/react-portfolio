@@ -39,7 +39,7 @@ export default function Hero() {
               </a>
               <span className="italic text-gray-500">{t('hero.or')}</span>
               <a
-                href="https://drive.google.com/uc?export=download&id=1OfjHn5TDG8-S0A00chTDq5Npbly4Xvzk"
+                href="https://drive.google.com/file/d/1p860Bp2bdLL2nA4wnR5o9SMsrpH8-w-o/view?usp=drive_link"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="button flex items-center gap-2 bg-white px-4 py-2 rounded-lg text-gray-600 hover:text-gray-900 transition-colors"

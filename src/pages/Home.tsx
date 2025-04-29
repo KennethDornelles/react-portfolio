@@ -9,6 +9,7 @@ const Services = lazy(() => import("../components/Services"))
 const Skills = lazy(() => import("../components/Skills"))
 const Testimonials = lazy(() => import("../components/Testimonials"))
 const CodeDemo = lazy(() => import("../components/code/CodeDemo"))
+const Resume = lazy(() => import("../components/Resume"))
 
 // Componente de loading para Suspense
 const Loading = () => (
@@ -36,6 +37,9 @@ export default function Home() {
                 </Suspense>
                 <Suspense fallback={<Loading />}>
                     <CodeDemo />
+                </Suspense>
+                <Suspense fallback={<Loading />}>
+                    <Resume />
                 </Suspense>
                 <Suspense fallback={<Loading />}>
                     <Testimonials />

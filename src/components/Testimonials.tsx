@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next"
 
 export default function Testimonials() {
   const { t } = useTranslation()
-  
+
   return (
     <section className="container mx-auto max-w-4xl p-4 py-16">
       <div className="relative mb-8 p-4 text-center">
@@ -21,16 +21,14 @@ export default function Testimonials() {
         <FaQuoteLeft className="h-10 w-10 text-gray-600 dark:text-blue-400" />
         <blockquote className="mb-6 mt-4">
           <p className="text-xl md:text-2xl font-light text-gray-900 dark:text-gray-100">
-            Kenneth me entregou o projeto no prazo e executando corretamente
-            conforme combinado no nosso contrato. Recomendo o trabalho dele para
-            todos que desejam um trabalho sério.
+            {t('testimonials.rayane.text')}
           </p>
         </blockquote>
         <figcaption className="flex items-center justify-end gap-2">
           <div className="flex items-center divide-x-2 divide-gray-200 dark:divide-gray-600">
-            <div className="pr-3 font-medium text-gray-900 dark:text-white">Rayane Aleixo</div>
+            <div className="pr-3 font-medium text-gray-900 dark:text-white">{t('testimonials.rayane.name')}</div>
             <div className="pl-3 text-sm font-light text-gray-500 dark:text-gray-300">
-              ongep.com
+              {t('testimonials.rayane.company')}
             </div>
           </div>
         </figcaption>

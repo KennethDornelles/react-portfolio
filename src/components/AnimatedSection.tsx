@@ -6,6 +6,7 @@ export type AnimationType = 'fadeUp' | 'fadeIn' | 'slideLeft' | 'slideRight' | '
 
 interface AnimatedSectionProps {
     children: React.ReactNode;
+    id?: string;
     className?: string;
     delay?: number;
     duration?: number;
@@ -16,6 +17,7 @@ interface AnimatedSectionProps {
 
 const AnimatedSection: React.FC<AnimatedSectionProps> = ({
     children,
+    id,
     className = '',
     delay = 0,
     duration = 0.6,
@@ -110,6 +112,7 @@ const AnimatedSection: React.FC<AnimatedSectionProps> = ({
             animate={inView ? 'visible' : 'hidden'}
             variants={animations[animationType]}
             className={className}
+            id={id}
         >
             {children}
         </motion.div>
