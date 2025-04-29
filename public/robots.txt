@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://react-portfolio-ten-gules.vercel.app/sitemap.xml

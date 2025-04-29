@@ -6,8 +6,10 @@ import {
   HiOutlineEnvelope,
   HiOutlineMapPin,
 } from "react-icons/hi2"
+import { useTranslation } from "react-i18next"
 
 export default function Contact() {
+  const { t } = useTranslation()
   const form = useRef<HTMLFormElement>(null)
   const [loading, setLoading] = useState(false)
   const [success, setSuccess] = useState(false)
@@ -54,9 +56,9 @@ export default function Contact() {
       icon: <HiOutlineEnvelope className="h-10 w-10" />,
     },
     {
-      name: "Porto Alegre - RS",
-      description: "Medianeira, 288",
-      link: "https://www.google.com/maps/place/Porto+Alegre,+RS/@-30.1084702,-51.3419543,11z/data=!3m1!4b1!4m6!3m5!1s0x95199cd2566acb1d:0x603111a89f87e91f!8m2!3d-30.0368176!4d-51.2089887!16zL20vMDE3NTc1?entry=ttu",
+      name: "João Pessoa",
+      description: "Colibris, 111",
+      link: "https://www.google.com/maps/place/Cidade+dos+Colibris,+Jo%C3%A3o+Pessoa+-+PB/@-7.1617806,-34.8593427,15z/data=!3m1!4b1!4m6!3m5!1s0x7acc26209426f61:0xceb5ebd2c04a56bf!8m2!3d-7.1633415!4d-34.8486199!16s%2Fg%2F121f8yjy?entry=ttu&g_ep=EgoyMDI1MDQyMy4wIKXMDSoASAFQAw%3D%3D",
       icon: <HiOutlineMapPin className="h-10 w-10" />,
     },
   ]
@@ -67,13 +69,14 @@ export default function Contact() {
         <div className="mb-10 text-center md:text-left">
           <h2 className="mb-4 inline-flex items-center">
             <span className="mr-2 font-headline text-3xl font-semibold">
-              Fale
+              {t('contact.title')}
             </span>
-            <span className="font-handwriting text-4xl">Comigo</span>
+            <span className="font-handwriting text-4xl">
+              {t('contact.subtitle')}
+            </span>
           </h2>
           <p className="text-base md:text-lg max-w-2xl mx-auto md:mx-0">
-            Entre em contato por formulário ou WhatsApp, com certeza irei poder
-            te ajudar.
+            {t('contact.description')}
           </p>
         </div>
 
@@ -85,14 +88,14 @@ export default function Contact() {
                   htmlFor="message"
                   className="mb-2 block ps-4 font-headline font-semibold"
                 >
-                  Mensagem:
+                  {t('contact.message')}:
                 </label>
                 <textarea
                   id="message"
                   name="message"
                   className="h-36 w-full rounded-lg border border-white/30 bg-transparent p-3 outline-none focus:border-white focus:ring-2 focus:ring-white/20"
                   required
-                  placeholder="Digite sua mensagem aqui..."
+                  placeholder={`${t('contact.message')}...`}
                 />
               </div>
               <div className="mb-6 flex flex-col gap-6 md:flex-row">
@@ -101,7 +104,7 @@ export default function Contact() {
                     htmlFor="fullName"
                     className="mb-2 block ps-4 font-headline font-semibold"
                   >
-                    Seu nome:
+                    {t('contact.name')}:
                   </label>
                   <input
                     className="w-full rounded-lg border border-white/30 bg-transparent p-3 outline-none focus:border-white focus:ring-2 focus:ring-white/20"
@@ -109,7 +112,7 @@ export default function Contact() {
                     name="fullName"
                     id="fullName"
                     required
-                    placeholder="Nome completo"
+                    placeholder={t('contact.name')}
                   />
                 </div>
                 <div className="flex-grow">
@@ -117,7 +120,7 @@ export default function Contact() {
                     htmlFor="email"
                     className="mb-2 block ps-4 font-headline font-semibold"
                   >
-                    Seu email:
+                    {t('contact.email')}:
                   </label>
                   <input
                     className="w-full rounded-lg border border-white/30 bg-transparent p-3 outline-none focus:border-white focus:ring-2 focus:ring-white/20"
@@ -125,7 +128,7 @@ export default function Contact() {
                     name="email"
                     id="email"
                     required
-                    placeholder="seu@email.com"
+                    placeholder="your@email.com"
                   />
                 </div>
               </div>
@@ -138,13 +141,12 @@ export default function Contact() {
                 >
                   {loading && <FaSpinner className="h-4 w-4 animate-spin" />}
                   {success && <HiCheckCircle className="h-5 w-5 text-green-500" />}
-                  {success ? "Mensagem enviada!" : "Enviar mensagem"}
+                  {success ? t('contact.success') : t('contact.send')}
                 </button>
 
                 {error && (
                   <p className="mt-4 text-red-300 bg-red-900/30 p-3 rounded-lg">
-                    Ocorreu um erro ao enviar a mensagem, tente novamente mais
-                    tarde.
+                    {t('contact.error')}
                   </p>
                 )}
               </div>

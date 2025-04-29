@@ -1,6 +1,9 @@
 import { HiDownload } from "react-icons/hi"
+import { useTranslation } from 'react-i18next'
 
 export default function Hero() {
+  const { t } = useTranslation();
+
   return (
     <>
       <section className="rounded-br-[80px] bg-gradient-to-tr from-black to-gray-900 text-white md:rounded-br-[180px]">
@@ -8,7 +11,7 @@ export default function Hero() {
           <div className="basis-1/2">
             <h1 className="mb-6 text-center md:text-left">
               <span className="block font-handwriting text-3xl">
-                Olá, me chamo
+                {t('hero.greeting')}
               </span>
               <span className="mr-2 font-headline sm text-4xl  font-semibold">
                 Kenneth
@@ -20,12 +23,11 @@ export default function Hero() {
 
             <h2 className="mb-6 flex items-center justify-center gap-2 font-semibold md:justify-start">
               <div className="h-1 w-12 rounded-full bg-blue-800" />
-            Desenvolvedor Fullstack com foco em Frontend React.js
+              {t('hero.role')}
             </h2>
 
             <p className="mb-6 text-center text-gray-400 md:text-left">
-             Desenvolvedor Fullstack apaixonado por React: Crie experiências
-            incríveis com expertise em Frontend e Backend
+              {t('hero.description')}
             </p>
 
             <div className="flex items-center justify-center gap-2 md:justify-start">
@@ -33,9 +35,9 @@ export default function Hero() {
                 href="#contact"
                 className="underline-thickness-2 font-bold text-white underline decoration-2 underline-offset-4 transition hover:decoration-blue-700"
               >
-              Fala comigo, que te escuto
+                {t('hero.talk')}
               </a>
-              <span className="italic text-gray-500">ou</span>
+              <span className="italic text-gray-500">{t('hero.or')}</span>
               <a
                 href="https://drive.google.com/uc?export=download&id=1OfjHn5TDG8-S0A00chTDq5Npbly4Xvzk"
                 target="_blank"
@@ -44,7 +46,7 @@ export default function Hero() {
                 download="Kenneth_Olusegun_CV.pdf"
               >
                 <HiDownload className="text-blue-600" />
-                Baixe meu CV
+                {t('hero.download')}
               </a>
             </div>
           </div>

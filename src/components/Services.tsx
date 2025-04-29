@@ -3,23 +3,25 @@ import {
   HiComputerDesktop,
   HiDevicePhoneMobile,
 } from "react-icons/hi2"
+import { useTranslation } from "react-i18next"
 
 export default function Services() {
+  const { t } = useTranslation()
+
   const services = [
     {
-      title: "Web",
-      description:
-        "Desenvolvimento de sites e sistemas web estáticos e dinâmicos com React.js, Next.js, HTML5 e CSS3.",
+      title: t('services.frontend.title'),
+      description: t('services.frontend.description'),
       icon: <HiComputerDesktop className="h-12 w-12" />,
     },
     {
-      title: "Sistemas",
-      description: "Desenvolvimento de sistemas e APIs REST/GraphQl com Node.js.",
+      title: t('services.backend.title'),
+      description: t('services.backend.description'),
       icon: <HiCommandLine className="h-12 w-12" />,
     },
     {
-      title: "Mobile",
-      description: "Desenvolvimento de aplicativos Android e iOS.",
+      title: t('services.ux.title'),
+      description: t('services.ux.description'),
       icon: <HiDevicePhoneMobile className="h-12 w-12" />,
     },
   ]
@@ -28,11 +30,10 @@ export default function Services() {
     <section className="container mx-auto my-12 max-w-4xl p-4">
       <div className="p-4 text-center">
         <p className="text-sm font-semibold uppercase text-blue-600">
-          O que faço de melhor
+          {t('services.subtitle')}
         </p>
         <h2 className="mb-2 font-bold text-blue-900">
-          <span className="mr-2 font-headline text-3xl">Meus</span>
-          <span className="font-handwriting text-4xl">Serviços</span>
+          <span className="mr-2 font-headline text-3xl">{t('services.title')}</span>
         </h2>
         <p className=" text-sm text-gray-600">
           Posso atender uma gama completa de serviços, do front-end ao back-end

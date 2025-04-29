@@ -1,8 +1,10 @@
 import { useTheme } from '../contexts/ThemeContext';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 
 const ThemeToggle = () => {
   const { darkMode, toggleDarkMode } = useTheme();
+  const { t } = useTranslation();
 
   return (
     <motion.button
@@ -13,7 +15,7 @@ const ThemeToggle = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.3 }}
-      aria-label={darkMode ? "Mudar para modo claro" : "Mudar para modo escuro"}
+      aria-label={darkMode ? t('theme.dark') : t('theme.light')}
     >
       {darkMode ? (
         <svg

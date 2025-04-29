@@ -1,15 +1,18 @@
 import { FaQuoteLeft } from "react-icons/fa"
+import { useTranslation } from "react-i18next"
 
 export default function Testimonials() {
+  const { t } = useTranslation()
+  
   return (
     <section className="container mx-auto max-w-4xl p-4 py-16">
       <div className="relative mb-8 p-4 text-center">
         <h2 className="relative z-50 mb-2 font-bold">
           <span className="mr-2 font-headline text-3xl text-gray-800 dark:text-gray-100">
-            Depoimentos de
+            {t('testimonials.title')}
           </span>
           <span className="font-handwriting text-4xl text-blue-800 dark:text-blue-400">
-            Clientes
+            {t('testimonials.subtitle')}
           </span>
         </h2>
         <div className="absolute left-1/2 top-3 z-0 h-10 w-10 -translate-x-1/2 rounded-lg bg-blue-400/10 dark:bg-blue-500/10" />
