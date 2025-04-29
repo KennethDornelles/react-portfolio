@@ -1,33 +1,37 @@
+import AnimatedSection from "./AnimatedSection"
+
 export default function About() {
   return (
     <section className="container mx-auto my-4 max-w-5xl p-4">
-      <div className="relative p-4 text-center">
-        <h2 className="relative z-50 mb-2 font-bold text-blue-900">
-          <span className="mr-2 font-headline text-3xl">Sobre</span>
-          <span className="font-handwriting text-4xl">Mim</span>
-        </h2>
-        <p className="relative text-sm text-gray-600">
-          Me chamo Kenneth, possuo 25 anos apaixonado por tecnologia,
-          videogames, música, codar e artes marciais, as quais são a minha vida
-          desde meus 5 anos onde procuro me libertar dos problemas e aflições,
-          minha experiência profissional que mais me impactou foi ter a
-          oportunidade de trabalhar do desenvolvimento do ecossistema Cobby by
-          PurpleCats o primeiro banco crypto do Brasil. Minha Stack engloba
-          Javascript, Typescript, PrismaOrm, GraphQl, RabbitMQ,
-          PostgreSQL/MySql, Docker, Azure Devops, HTML, CSS e
-          React/React-Native, conhecimento em inglês intermediário B1
-          certificado e japonês B1 também certificado.
-        </p>
-        <div className="absolute left-1/2 top-3 z-0 h-10 w-10 rounded-lg bg-blue-100/40" />
-      </div>
+      <AnimatedSection>
+        <div className="relative p-4 text-center">
+          <h2 className="relative z-50 mb-2 font-bold text-blue-900 dark:text-blue-400">
+            <span className="mr-2 font-headline text-3xl">Sobre</span>
+            <span className="font-handwriting text-4xl">Mim</span>
+          </h2>
+          <p className="relative text-sm text-gray-600 dark:text-gray-300">
+            Me chamo Kenneth, possuo 25 anos apaixonado por tecnologia,
+            videogames, música, codar e artes marciais, as quais são a minha vida
+            desde meus 5 anos onde procuro me libertar dos problemas e aflições,
+            minha experiência profissional que mais me impactou foi ter a
+            oportunidade de trabalhar do desenvolvimento do ecossistema Cobby by
+            PurpleCats o primeiro banco crypto do Brasil. Minha Stack engloba
+            Javascript, Typescript, PrismaOrm, GraphQl, RabbitMQ,
+            PostgreSQL/MySql, Docker, Azure Devops, HTML, CSS e
+            React/React-Native, conhecimento em inglês intermediário B1
+            certificado e japonês B1 também certificado.
+          </p>
+          <div className="absolute left-1/2 top-3 z-0 h-10 w-10 rounded-lg bg-blue-100/40 dark:bg-blue-900/20" />
+        </div>
+      </AnimatedSection>
 
-      <div className="mx-auto mt-20 max-w-lg">
-        <div className="relative w-full rounded-lg bg-blue-100 p-4 ps-20 md:h-64 md:ps-48">
-          <div className="relative h-full w-full rounded-lg bg-gray-50 p-4">
+      <AnimatedSection delay={0.2} className="mx-auto mt-20 max-w-lg">
+        <div className="relative w-full rounded-lg bg-blue-100 dark:bg-blue-900/30 p-4 ps-20 md:h-64 md:ps-48">
+          <div className="relative h-full w-full rounded-lg bg-gray-50 dark:bg-dark-card p-4">
             <p className="font-handwriting text-lg font-bold">Olá,</p>
             <p>
               <span className="mr-1">Meu nome é</span>
-              <span className="font-headline font-bold uppercase text-blue-900">
+              <span className="font-headline font-bold uppercase text-blue-900 dark:text-blue-400">
                 Kenneth Olusegun
               </span>
             </p>
@@ -35,53 +39,53 @@ export default function About() {
             <table className="mt-4 w-full text-sm">
               <tbody>
                 <tr>
-                  <td className="font-headline font-bold uppercase text-blue-900">
+                  <td className="font-headline font-bold uppercase text-blue-900 dark:text-blue-400">
                     Idade:
                   </td>
                   <td>25</td>
                 </tr>
                 <tr>
-                  <td className="font-headline font-bold uppercase text-blue-900">
+                  <td className="font-headline font-bold uppercase text-blue-900 dark:text-blue-400">
                     Celular:
                   </td>
                   <td>
                     <a
                       href="tel:+5551997647760"
-                      className="underline hover:text-blue-800"
+                      className="underline hover:text-blue-800 dark:hover:text-blue-300"
                     >
                       +55 51 99764-7760
                     </a>
                   </td>
                 </tr>
                 <tr>
-                  <td className="font-headline font-bold uppercase text-blue-900">
+                  <td className="font-headline font-bold uppercase text-blue-900 dark:text-blue-400">
                     Email:
                   </td>
                   <td>
                     <a
                       href="mailto:kennetholusegun@gmail.com"
-                      className="underline hover:text-blue-800"
+                      className="underline hover:text-blue-800 dark:hover:text-blue-300"
                     >
                       kennetholusegun@gmail.com
                     </a>
                   </td>
                 </tr>
                 <tr>
-                  <td className="font-headline font-bold uppercase text-blue-900">
+                  <td className="font-headline font-bold uppercase text-blue-900 dark:text-blue-400">
                     Endereço:
                   </td>
                   <td>
                     <a
                       href="https://goo.gl/maps/4yacADQtLB8jz8zn9?coh=178573&entry=tt"
                       target="_blank"
-                      className="underline hover:text-blue-800"
+                      className="underline hover:text-blue-800 dark:hover:text-blue-300"
                     >
-                      Porto Alegre - RS
+                      João Pessoa - PB, Brasil
                     </a>
                   </td>
                 </tr>
                 <tr>
-                  <td className="font-headline font-bold uppercase text-blue-900">
+                  <td className="font-headline font-bold uppercase text-blue-900 dark:text-blue-400">
                     Disponível:
                   </td>
                   <td>
@@ -98,7 +102,7 @@ export default function About() {
                style={{ backgroundImage: `url("/images/eu.png")` }}>
           </div>
         </div>
-      </div>
+      </AnimatedSection>
     </section>
   )
 }

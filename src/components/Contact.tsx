@@ -62,25 +62,25 @@ export default function Contact() {
   ]
 
   return (
-    <section id="contact" className="bg-blue-700 text-white">
-      <div className="container mx-auto max-w-4xl p-4 py-8">
-        <div className="mb-6">
-          <h2 className="z-50 mb-2">
+    <section id="contact" className="bg-blue-700 text-white py-16">
+      <div className="container mx-auto max-w-5xl px-4">
+        <div className="mb-10 text-center md:text-left">
+          <h2 className="mb-4 inline-flex items-center">
             <span className="mr-2 font-headline text-3xl font-semibold">
               Fale
             </span>
             <span className="font-handwriting text-4xl">Comigo</span>
           </h2>
-          <p className="text-sm">
+          <p className="text-base md:text-lg max-w-2xl mx-auto md:mx-0">
             Entre em contato por formulário ou WhatsApp, com certeza irei poder
             te ajudar.
           </p>
         </div>
 
-        <div className="flex flex-col gap-6 md:flex-row">
+        <div className="flex flex-col gap-8 md:flex-row md:gap-12">
           <div className="basis-2/3">
-            <form ref={form} onSubmit={sendEmail}>
-              <div className="mb-4">
+            <form ref={form} onSubmit={sendEmail} className="bg-blue-800 bg-opacity-50 rounded-2xl p-6 shadow-lg">
+              <div className="mb-6">
                 <label
                   htmlFor="message"
                   className="mb-2 block ps-4 font-headline font-semibold"
@@ -90,11 +90,12 @@ export default function Contact() {
                 <textarea
                   id="message"
                   name="message"
-                  className="h-36 w-full rounded-lg border border-white bg-transparent p-2 outline-none"
+                  className="h-36 w-full rounded-lg border border-white/30 bg-transparent p-3 outline-none focus:border-white focus:ring-2 focus:ring-white/20"
                   required
+                  placeholder="Digite sua mensagem aqui..."
                 />
               </div>
-              <div className="mb-6 flex flex-col gap-4 md:flex-row">
+              <div className="mb-6 flex flex-col gap-6 md:flex-row">
                 <div className="flex-grow">
                   <label
                     htmlFor="fullName"
@@ -103,11 +104,12 @@ export default function Contact() {
                     Seu nome:
                   </label>
                   <input
-                    className="w-full rounded-lg border border-white bg-transparent p-2 outline-none"
+                    className="w-full rounded-lg border border-white/30 bg-transparent p-3 outline-none focus:border-white focus:ring-2 focus:ring-white/20"
                     type="text"
                     name="fullName"
                     id="fullName"
                     required
+                    placeholder="Nome completo"
                   />
                 </div>
                 <div className="flex-grow">
@@ -118,11 +120,12 @@ export default function Contact() {
                     Seu email:
                   </label>
                   <input
-                    className="w-full rounded-lg border border-white bg-transparent p-2 outline-none"
+                    className="w-full rounded-lg border border-white/30 bg-transparent p-3 outline-none focus:border-white focus:ring-2 focus:ring-white/20"
                     type="email"
                     name="email"
                     id="email"
                     required
+                    placeholder="seu@email.com"
                   />
                 </div>
               </div>
@@ -130,16 +133,16 @@ export default function Contact() {
               <div>
                 <button
                   type="submit"
-                  className="button flex items-center gap-2 text-blue-700"
+                  className="button flex items-center gap-2 bg-white text-blue-700 hover:bg-blue-50 transition px-6 py-3 rounded-lg font-semibold shadow-md"
                   disabled={loading}
                 >
                   {loading && <FaSpinner className="h-4 w-4 animate-spin" />}
-                  {success && <HiCheckCircle className="h-4 w-4" />}
-                  Enviar mensagem
+                  {success && <HiCheckCircle className="h-5 w-5 text-green-500" />}
+                  {success ? "Mensagem enviada!" : "Enviar mensagem"}
                 </button>
 
                 {error && (
-                  <p className="mt-2">
+                  <p className="mt-4 text-red-300 bg-red-900/30 p-3 rounded-lg">
                     Ocorreu um erro ao enviar a mensagem, tente novamente mais
                     tarde.
                   </p>
@@ -151,15 +154,18 @@ export default function Contact() {
             {contacts.map((contact, index) => (
               <div
                 key={`contact-${index}`}
-                className="mb-4 flex items-center gap-4 rounded-lg border border-dashed border-gray-400 p-4"
+                className="mb-6 flex items-center gap-4 rounded-xl border border-white/20 bg-blue-800 bg-opacity-50 p-4 transition-all hover:border-white/40 hover:bg-blue-800/70 shadow-md"
               >
-                {contact.icon}
+                <div className="rounded-full bg-white/10 p-3">
+                  {contact.icon}
+                </div>
                 <div>
-                  <p className="font-headline font-semibold">{contact.name}</p>
+                  <p className="font-headline font-semibold text-lg">{contact.name}</p>
                   <a
                     href={contact.link}
                     target="_blank"
-                    className="text-gray-300 underline underline-offset-2"
+                    rel="noopener noreferrer"
+                    className="text-blue-200 hover:text-white hover:underline underline-offset-2 transition-colors"
                   >
                     {contact.description}
                   </a>
