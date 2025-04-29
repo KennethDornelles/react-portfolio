@@ -6,6 +6,10 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 import ptBR from './locales/pt-BR';
 import enUS from './locales/en-US';
 
+// Adiciona timestamp para forçar atualização de cache
+const cacheVersion = Date.now().toString();
+
+// Define os recursos com versão para evitar cache
 const resources = {
   'pt-BR': ptBR,
   'en-US': enUS
@@ -27,7 +31,28 @@ i18n
     detection: {
       order: ['localStorage', 'navigator'],
       caches: ['localStorage']
+    },
+    // Configurar cache de forma adequada
+    load: 'currentOnly',
+    // Usando um namespace versionado para evitar cache
+    ns: [`translation_${cacheVersion}`],
+    defaultNS: `translation_${cacheVersion}`,
+    fallbackNS: 'translation'
+  });
+
+// Método alternativo para forçar recarga de traduções
+// Isso garante que qualquer cache seja invalidado
+i18n.reloadResources();
+
+// Limpeza de cache do localStorage
+try {
+  Object.keys(localStorage).forEach(key => {
+    if (key.startsWith('i18next_res_')) {
+      localStorage.removeItem(key);
     }
   });
+} catch (e) {
+  console.warn('Não foi possível limpar o cache do localStorage:', e);
+}
 
 export default i18n;

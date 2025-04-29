@@ -10,10 +10,29 @@ import { Education, Experience } from '../types/resume';
 const Resume: React.FC = () => {
   const { t, i18n } = useTranslation();
   const [activeTab, setActiveTab] = useState<'experience' | 'education'>('experience');
-  // Estado para armazenar as traduções carregadas
   const [educationData, setEducationData] = useState<Education[]>([]);
   const [experienceData, setExperienceData] = useState<Experience[]>([]);
   const [isLoaded, setIsLoaded] = useState(false);
+  // Adicionar estado para forçar atualização
+  const [forceUpdate, setForceUpdate] = useState(Date.now());
+
+  // Efeito para forçar a atualização do componente quando for montado
+  useEffect(() => {
+    // Função para forçar recarregamento de traduções
+    const forceTranslationsReload = async () => {
+      try {
+        // Forçar recarregamento das traduções
+        await i18n.reloadResources();
+        // Forçar atualização do componente
+        setForceUpdate(Date.now());
+      } catch (error) {
+        console.error('Erro ao recarregar traduções:', error);
+      }
+    };
+
+    // Executar ao montar o componente
+    forceTranslationsReload();
+  }, [i18n]);
 
   // Efeito para garantir que as traduções sejam carregadas corretamente
   useEffect(() => {
@@ -102,12 +121,12 @@ const Resume: React.FC = () => {
       const educations: Education[] = [
         {
           id: 'edu1',
-          institution: t('resume.education.institution1', { defaultValue: 'Universidade Federal da Paraíba' }),
-          degree: t('resume.education.degree1', { defaultValue: 'Bacharelado em Ciência da Computação' }),
-          field: t('resume.education.field1', { defaultValue: 'Ciência da Computação' }),
-          startDate: t('resume.education.startDate1', { defaultValue: 'Jan 2021' }),
+          institution: t('resume.education.institution1', { defaultValue: 'Unicesumar' }),
+          degree: t('resume.education.degree1', { defaultValue: 'Bacharelado em Engenharia de Software' }),
+          field: t('resume.education.field1', { defaultValue: 'Engenharia de Software' }),
+          startDate: t('resume.education.startDate1', { defaultValue: 'Jan 2024' }),
           endDate: null,
-          description: t('resume.education.description1', { defaultValue: 'Cursando bacharelado em Ciência da Computação, com foco em desenvolvimento de software.' }),
+          description: t('resume.education.description1', { defaultValue: 'Cursando bacharelado em Engenharia de Software, com foco em desenvolvimento de software.' }),
           location: t('resume.education.location1', { defaultValue: 'João Pessoa, PB' })
         },
         {
@@ -127,7 +146,7 @@ const Resume: React.FC = () => {
       setIsLoaded(true);
     };
 
-    // Chamar a função quando o idioma muda
+    // Chamar a função quando o idioma muda ou quando forceUpdate é chamado
     updateTranslations();
 
     // Adicionar um listener para mudanças de idioma
@@ -137,7 +156,7 @@ const Resume: React.FC = () => {
     return () => {
       i18n.off('languageChanged', updateTranslations);
     };
-  }, [t, i18n]);
+  }, [t, i18n, forceUpdate]); // Adicionado forceUpdate como dependência
 
   // Format experience items for timeline
   const experienceItems = experienceData.map(exp => ({
