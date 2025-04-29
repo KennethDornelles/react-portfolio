@@ -3,9 +3,9 @@ import { HiArrowRight, HiDownload } from 'react-icons/hi'
 
 export default function Hero() {
   const { t } = useTranslation()
-  
-  // Para o ambiente Vercel, temos que garantir que o caminho está correto
-  const pdfFilePath = `${import.meta.env.BASE_URL || '/'}assets/KENNETH OLUSEGUN.pdf`;
+
+  // Usando o arquivo com nome sem espaços para evitar problemas de URL
+  const pdfFilePath = '/assets/kenneth_olusegun_cv.pdf';
 
   return (
     <>
