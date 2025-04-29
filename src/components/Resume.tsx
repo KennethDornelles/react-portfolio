@@ -7,8 +7,8 @@ import CodeBlock from './code/CodeBlock';
 import { HiAcademicCap, HiBriefcase, HiDocumentText } from 'react-icons/hi2';
 import { Education, Experience } from '../types/resume';
 
-// Import your actual resume PDF - Corrected filename
-import resumePdf from '../assets/KENNETH OLUSEGUN.pdf';
+// Não importamos o PDF diretamente, usaremos URL direta para a pasta public
+// O arquivo PDF deve estar em public/assets/
 
 const Resume: React.FC = () => {
   const { t } = useTranslation();
@@ -266,7 +266,7 @@ const Resume: React.FC = () => {
                 {t('resume.downloadDescription')}
               </p>
               <a
-                href={resumePdf}
+                href="/assets/KENNETH OLUSEGUN.pdf"
                 download="KENNETH_OLUSEGUN.pdf"
                 className="inline-flex items-center px-4 py-2 bg-primary-600 hover:bg-primary-700 text-white rounded-md transition-colors"
               >
