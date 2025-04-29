@@ -69,7 +69,23 @@ const enUS = {
     
     // Theme toggle
     "theme.light": "Switch to dark mode",
-    "theme.dark": "Switch to light mode"
+    "theme.dark": "Switch to light mode",
+    
+    // Accessibility
+    "accessibility.title": "Accessibility",
+    "accessibility.toggleMenu": "Open accessibility menu",
+    "accessibility.close": "Close accessibility menu",
+    "accessibility.fontSize": "Font size",
+    "accessibility.contrast": "Contrast",
+    "accessibility.normal": "Normal",
+    "accessibility.highContrast": "High contrast",
+    "accessibility.reset": "Reset settings",
+    "accessibility.successMessage": "Message sent successfully!",
+    "accessibility.errorMessage": "An error occurred while sending your message. Please try again.",
+    
+    // Code Demo
+    "code.title": "Code Examples",
+    "code.subtitle": "Some code snippets that demonstrate my programming skills"
   }
 };
 

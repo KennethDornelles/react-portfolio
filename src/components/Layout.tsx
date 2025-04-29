@@ -2,6 +2,7 @@ import { Suspense, lazy } from "react"
 import { Outlet } from "react-router-dom"
 import ThemeToggle from "./ThemeToggle"
 import LanguageSelector from "./LanguageSelector"
+import AccessibilityControls from "./accessibility/AccessibilityControls"
 
 const Footer = lazy(() => import("./Footer"))
 
@@ -17,6 +18,7 @@ export default function Layout() {
     <div className="min-h-screen transition-colors duration-300 dark:bg-dark-bg dark:text-dark-text overflow-x-hidden">
       <ThemeToggle />
       <LanguageSelector />
+      <AccessibilityControls />
       <Outlet />
       <footer>
         <Suspense fallback={<Loading />}>

@@ -69,7 +69,23 @@ const ptBR = {
     
     // Theme toggle
     "theme.light": "Mudar para modo escuro",
-    "theme.dark": "Mudar para modo claro"
+    "theme.dark": "Mudar para modo claro",
+    
+    // Accessibility
+    "accessibility.title": "Acessibilidade",
+    "accessibility.toggleMenu": "Abrir menu de acessibilidade",
+    "accessibility.close": "Fechar menu de acessibilidade",
+    "accessibility.fontSize": "Tamanho da fonte",
+    "accessibility.contrast": "Contraste",
+    "accessibility.normal": "Normal",
+    "accessibility.highContrast": "Alto contraste",
+    "accessibility.reset": "Restaurar configurações",
+    "accessibility.successMessage": "Mensagem enviada com sucesso!",
+    "accessibility.errorMessage": "Ocorreu um erro ao enviar sua mensagem. Tente novamente.",
+    
+    // Code Demo
+    "code.title": "Exemplos de Código",
+    "code.subtitle": "Alguns trechos de código que demonstram minhas habilidades de programação"
   }
 };
 

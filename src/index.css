@@ -1,3 +1,4 @@
+/* This uses Tailwind CSS - these are valid Tailwind directives */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -15,5 +16,37 @@
   .scrollbar-hide {
     -ms-overflow-style: none;
     scrollbar-width: none;
+  }
+  
+  /* Acessibilidade - Tamanhos de Fonte */
+  html.text-large {
+    font-size: 18px;
+  }
+  
+  html.text-x-large {
+    font-size: 20px;
+  }
+  
+  /* Acessibilidade - Alto Contraste */
+  html.contrast-high-contrast {
+    filter: contrast(1.4);
+  }
+  
+  html.contrast-high-contrast body {
+    background-color: #000 !important;
+    color: #fff !important;
+  }
+  
+  html.contrast-high-contrast a:focus,
+  html.contrast-high-contrast button:focus,
+  html.contrast-high-contrast input:focus,
+  html.contrast-high-contrast textarea:focus,
+  html.contrast-high-contrast select:focus {
+    outline: 2px solid yellow !important;
+    outline-offset: 2px !important;
+  }
+  
+  html.contrast-high-contrast :is(a, button):hover {
+    text-decoration: underline;
   }
 }

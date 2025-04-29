@@ -1,16 +1,21 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+import { HelmetProvider } from 'react-helmet-async'
+import { BrowserRouter } from 'react-router-dom'
 import App from './App.tsx'
 import './index.css'
-import { HelmetProvider } from 'react-helmet-async'
+import './i18n/i18n'
+import { initGA } from './config/analytics'
 
-// Importar i18n (isso inicializará a configuração)
-import './i18n/i18n.ts'
+// Inicializa o Google Analytics
+initGA();
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <HelmetProvider>
-      <App />
-    </HelmetProvider>
+    <BrowserRouter>
+      <HelmetProvider>
+        <App />
+      </HelmetProvider>
+    </BrowserRouter>
   </React.StrictMode>,
 )
