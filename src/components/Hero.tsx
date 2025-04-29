@@ -4,9 +4,8 @@ import { HiArrowRight, HiDownload } from 'react-icons/hi'
 export default function Hero() {
   const { t } = useTranslation()
 
-  // Usando URL direto para contornar problemas de roteamento do SPA
-  // Esta é uma URL para um serviço de armazenamento público
-  const pdfUrl = 'https://raw.githubusercontent.com/kdujesus/portfolio-assets/main/kenneth_olusegun_cv.pdf';
+  // Usando URL raw diretamente do repositório do projeto
+  const pdfUrl = 'https://raw.githubusercontent.com/KennethDornelles/react-portfolio/main/public/assets/kenneth_olusegun_cv.pdf';
 
   return (
     <>

@@ -180,8 +180,8 @@ const Resume: React.FC = () => {
   ]
 }`;
 
-  // Usando URL direto para contornar problemas de roteamento do SPA
-  const pdfUrl = 'https://raw.githubusercontent.com/kdujesus/portfolio-assets/main/kenneth_olusegun_cv.pdf';
+  // Usando URL raw diretamente do repositório do projeto
+  const pdfUrl = 'https://raw.githubusercontent.com/KennethDornelles/react-portfolio/main/public/assets/kenneth_olusegun_cv.pdf';
   const pdfFileName = 'kenneth_olusegun_cv.pdf';
 
   return (
