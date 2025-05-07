@@ -50,8 +50,11 @@ const enUS = {
     "projects.viewProject": "View project",
     "projects.viewCode": "View code",
     "projects.portfolio": "Portfolio React",
+    "projects.portfolio.description": "Personal portfolio website developed with React, TypeScript and TailwindCSS.",
     "projects.ongep": "ONGEP",
+    "projects.ongep.description": "System for management of NGOs and social projects.",
     "projects.kinvoTest": "Kinvo Front-end Test",
+    "projects.kinvoTest.description": "Test for candidates for the Front-End position.",
     "projects.others": "Other Projects",
     
     // Skills section

@@ -22,7 +22,7 @@ export default function Projects() {
   const featuredProjects = [
     {
       title: t('projects.portfolio'),
-      description: "Site de portfólio pessoal desenvolvido com React, TypeScript e TailwindCSS",
+      description: t('projects.portfolio.description'),
       image: "/images/portfolio.png",
       link: "https://react-portfolio-apg7j4u6o-kennethdornelles-projects.vercel.app/",
       github: "https://github.com/KennethDornelles/react-portfolio",
@@ -31,7 +31,7 @@ export default function Projects() {
     },
     {
       title: t('projects.ongep'),
-      description: "Sistema para gestão de ONGs e projetos sociais.",
+      description: t('projects.ongep.description'),
       image: "/images/ongep.png",
       link: "https://ongep.vercel.app/",
       github: "https://github.com/KennethDornelles/ongep",
@@ -40,7 +40,7 @@ export default function Projects() {
     },
     {
       title: t('projects.kinvoTest'),
-      description: "Teste para candidatos à vaga de Front-End",
+      description: t('projects.kinvoTest.description'),
       image: "/images/kinvo-frontend-test.png",
       github: "https://github.com/KennethDornelles/kinvo-front-end-test",
       colSpan: "col-span-1",

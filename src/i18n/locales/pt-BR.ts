@@ -50,8 +50,11 @@ const ptBR = {
     "projects.viewProject": "Ver projeto",
     "projects.viewCode": "Ver código",
     "projects.portfolio": "Portfolio React",
+    "projects.portfolio.description": "Site de portfólio pessoal desenvolvido com React, TypeScript e TailwindCSS.",
     "projects.kinvoTest": "Kinvo Front-end Test",
+    "projects.kinvoTest.description": "Teste para candidatos à vaga de Front-End.",
     "projects.ongep": "ONGEP",
+    "projects.ongep.description": "Sistema para gestão de ONGs e projetos sociais.",
     "projects.others": "Outros Projetos",
     
     // Skills section
