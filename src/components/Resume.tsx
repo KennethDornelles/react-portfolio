@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import Timeline from './resume/Timeline';
@@ -8,115 +8,158 @@ import { HiAcademicCap, HiBriefcase, HiDocumentText } from 'react-icons/hi2';
 import { Education, Experience } from '../types/resume';
 
 const Resume: React.FC = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [activeTab, setActiveTab] = useState<'experience' | 'education'>('experience');
+  const [educationData, setEducationData] = useState<Education[]>([]);
+  const [experienceData, setExperienceData] = useState<Experience[]>([]);
+  const [isLoaded, setIsLoaded] = useState(false);
+  // Adicionar estado para forçar atualização
+  const [forceUpdate, setForceUpdate] = useState(Date.now());
 
-  // Dados do currículo usando sistema de tradução
-  const experiences: Experience[] = [
-    {
-      id: 'exp1',
-      company: t('resume.experience.company1'),
-      position: t('resume.experience.position1'),
-      startDate: t('resume.experience.startDate1'),
-      endDate: null,
-      description: t('resume.experience.description1'),
-      location: t('resume.experience.location1'),
-      technologies: [
-        t('resume.experience.technology1.1'),
-        t('resume.experience.technology1.2'),
-        t('resume.experience.technology1.3'),
-        t('resume.experience.technology1.4'),
-        t('resume.experience.technology1.5')
-      ]
-    },
-    {
-      id: 'exp2',
-      company: t('resume.experience.company2'),
-      position: t('resume.experience.position2'),
-      startDate: t('resume.experience.startDate2'),
-      endDate: t('resume.experience.endDate2'),
-      description: t('resume.experience.description2'),
-      location: t('resume.experience.location2'),
-      technologies: [
-        t('resume.experience.technology2.1'),
-        t('resume.experience.technology2.2'),
-        t('resume.experience.technology2.3'),
-        t('resume.experience.technology2.4')
-      ]
-    },
-    {
-      id: 'exp3',
-      company: t('resume.experience.company3'),
-      position: t('resume.experience.position3'),
-      startDate: t('resume.experience.startDate3'),
-      endDate: t('resume.experience.endDate3'),
-      description: t('resume.experience.description3'),
-      location: t('resume.experience.location3'),
-      technologies: [
-        t('resume.experience.technology3.1'),
-        t('resume.experience.technology3.2'),
-        t('resume.experience.technology3.3'),
-        t('resume.experience.technology3.4'),
-        t('resume.experience.technology3.5'),
-        t('resume.experience.technology3.6')
-      ]
-    },
-    {
-      id: 'exp4',
-      company: t('resume.experience.company4'),
-      position: t('resume.experience.position4'),
-      startDate: t('resume.experience.startDate4'),
-      endDate: t('resume.experience.endDate4'),
-      description: t('resume.experience.description4'),
-      location: t('resume.experience.location4'),
-      technologies: [
-        t('resume.experience.technology4.1'),
-        t('resume.experience.technology4.2'),
-        t('resume.experience.technology4.3')
-      ]
-    },
-    {
-      id: 'exp5',
-      company: t('resume.experience.company5'),
-      position: t('resume.experience.position5'),
-      startDate: t('resume.experience.startDate5'),
-      endDate: t('resume.experience.endDate5'),
-      description: t('resume.experience.description5'),
-      location: t('resume.experience.location5'),
-      technologies: [
-        t('resume.experience.technology5.1'),
-        t('resume.experience.technology5.2'),
-        t('resume.experience.technology5.3'),
-        t('resume.experience.technology5.4')
-      ]
-    }
-  ];
+  // Efeito para forçar a atualização do componente quando for montado
+  useEffect(() => {
+    // Função para forçar recarregamento de traduções
+    const forceTranslationsReload = async () => {
+      try {
+        // Forçar recarregamento das traduções
+        await i18n.reloadResources();
+        // Forçar atualização do componente
+        setForceUpdate(Date.now());
+      } catch (error) {
+        console.error('Erro ao recarregar traduções:', error);
+      }
+    };
 
-  const educations: Education[] = [
-    {
-      id: 'edu1',
-      institution: t('resume.education.institution1'),
-      degree: t('resume.education.degree1'),
-      field: t('resume.education.field1'),
-      startDate: t('resume.education.startDate1'),
-      endDate: null,
-      description: t('resume.education.description1'),
-      location: t('resume.education.location1')
-    },
-    {
-      id: 'edu2',
-      institution: t('resume.education.institution2'),
-      degree: t('resume.education.degree2'),
-      field: t('resume.education.field2'),
-      startDate: t('resume.education.startDate2'),
-      endDate: null,
-      description: t('resume.education.description2'),
-      location: t('resume.education.location2')
-    }
-  ];
+    // Executar ao montar o componente
+    forceTranslationsReload();
+  }, [i18n]);
+
+  // Efeito para garantir que as traduções sejam carregadas corretamente
+  useEffect(() => {
+    // Função para atualizar os dados de tradução
+    const updateTranslations = () => {
+      const experiences: Experience[] = [
+        {
+          id: 'exp1',
+          company: t('resume.experience.company1'),
+          position: t('resume.experience.position1'),
+          startDate: t('resume.experience.startDate1'),
+          endDate: null,
+          description: t('resume.experience.description1'),
+          location: t('resume.experience.location1'),
+          technologies: [
+            t('resume.experience.technology1.1'),
+            t('resume.experience.technology1.2'),
+            t('resume.experience.technology1.3'),
+            t('resume.experience.technology1.4'),
+            t('resume.experience.technology1.5')
+          ]
+        },
+        {
+          id: 'exp2',
+          company: t('resume.experience.company2'),
+          position: t('resume.experience.position2'),
+          startDate: t('resume.experience.startDate2'),
+          endDate: t('resume.experience.endDate2'),
+          description: t('resume.experience.description2'),
+          location: t('resume.experience.location2'),
+          technologies: [
+            t('resume.experience.technology2.1'),
+            t('resume.experience.technology2.2'),
+            t('resume.experience.technology2.3'),
+            t('resume.experience.technology2.4')
+          ]
+        },
+        {
+          id: 'exp3',
+          company: t('resume.experience.company3'),
+          position: t('resume.experience.position3'),
+          startDate: t('resume.experience.startDate3'),
+          endDate: t('resume.experience.endDate3'),
+          description: t('resume.experience.description3'),
+          location: t('resume.experience.location3'),
+          technologies: [
+            t('resume.experience.technology3.1'),
+            t('resume.experience.technology3.2'),
+            t('resume.experience.technology3.3'),
+            t('resume.experience.technology3.4'),
+            t('resume.experience.technology3.5'),
+            t('resume.experience.technology3.6')
+          ]
+        },
+        {
+          id: 'exp4',
+          company: t('resume.experience.company4'),
+          position: t('resume.experience.position4'),
+          startDate: t('resume.experience.startDate4'),
+          endDate: t('resume.experience.endDate4'),
+          description: t('resume.experience.description4'),
+          location: t('resume.experience.location4'),
+          technologies: [
+            t('resume.experience.technology4.1'),
+            t('resume.experience.technology4.2'),
+            t('resume.experience.technology4.3')
+          ]
+        },
+        {
+          id: 'exp5',
+          company: t('resume.experience.company5'),
+          position: t('resume.experience.position5'),
+          startDate: t('resume.experience.startDate5'),
+          endDate: t('resume.experience.endDate5'),
+          description: t('resume.experience.description5'),
+          location: t('resume.experience.location5'),
+          technologies: [
+            t('resume.experience.technology5.1'),
+            t('resume.experience.technology5.2'),
+            t('resume.experience.technology5.3'),
+            t('resume.experience.technology5.4')
+          ]
+        }
+      ];
+
+      const educations: Education[] = [
+        {
+          id: 'edu1',
+          institution: t('resume.education.institution1', { defaultValue: 'Unicesumar' }),
+          degree: t('resume.education.degree1', { defaultValue: 'Bacharelado em Engenharia de Software' }),
+          field: t('resume.education.field1', { defaultValue: 'Engenharia de Software' }),
+          startDate: t('resume.education.startDate1', { defaultValue: 'Jan 2024' }),
+          endDate: null,
+          description: t('resume.education.description1', { defaultValue: 'Cursando bacharelado em Engenharia de Software, com foco em desenvolvimento de software.' }),
+          location: t('resume.education.location1', { defaultValue: 'João Pessoa, PB' })
+        },
+        {
+          id: 'edu2',
+          institution: t('resume.education.institution2', { defaultValue: 'Cod3r Cursos Online' }),
+          degree: t('resume.education.degree2', { defaultValue: 'Certificação Profissional' }),
+          field: t('resume.education.field2', { defaultValue: 'Desenvolvimento Web Full Stack' }),
+          startDate: t('resume.education.startDate2', { defaultValue: 'Jan 2020' }),
+          endDate: null,
+          description: t('resume.education.description2', { defaultValue: 'Curso completo de desenvolvimento web moderno.' }),
+          location: t('resume.education.location2', { defaultValue: 'Curso Online' })
+        }
+      ];
+
+      setExperienceData(experiences);
+      setEducationData(educations);
+      setIsLoaded(true);
+    };
+
+    // Chamar a função quando o idioma muda ou quando forceUpdate é chamado
+    updateTranslations();
+
+    // Adicionar um listener para mudanças de idioma
+    i18n.on('languageChanged', updateTranslations);
+
+    // Limpar o listener quando o componente for desmontado
+    return () => {
+      i18n.off('languageChanged', updateTranslations);
+    };
+  }, [t, i18n, forceUpdate]); // Adicionado forceUpdate como dependência
 
   // Format experience items for timeline
-  const experienceItems = experiences.map(exp => ({
+  const experienceItems = experienceData.map(exp => ({
     title: exp.position,
     subtitle: exp.company,
     date: exp.endDate ? `${exp.startDate} - ${exp.endDate}` : `${exp.startDate} - ${t('resume.present')}`,
@@ -126,7 +169,7 @@ const Resume: React.FC = () => {
   }));
 
   // Format education items for timeline
-  const educationItems = educations.map(edu => ({
+  const educationItems = educationData.map(edu => ({
     title: edu.degree,
     subtitle: `${edu.institution} - ${edu.field}`,
     date: `${edu.startDate} - ${edu.endDate ?? t('resume.present')}`,
@@ -140,19 +183,19 @@ const Resume: React.FC = () => {
   "title": "${t('resume.jobTitle')}",
   "experience": [
     {
-      "company": "${experiences[0].company}",
-      "position": "${experiences[0].position}",
-      "period": "${experiences[0].startDate} - ${experiences[0].endDate || t('resume.present')}",
-      "technologies": ${JSON.stringify(experiences[0].technologies)}
+      "company": "${experienceData[0]?.company || ''}",
+      "position": "${experienceData[0]?.position || ''}",
+      "period": "${experienceData[0]?.startDate || ''} - ${experienceData[0]?.endDate || t('resume.present')}",
+      "technologies": ${JSON.stringify(experienceData[0]?.technologies || [])}
     }
     // ...more experiences
   ],
   "education": [
     {
-      "institution": "${educations[0].institution}",
-      "degree": "${educations[0].degree}",
-      "field": "${educations[0].field}",
-      "period": "${educations[0].startDate} - ${educations[0].endDate || t('resume.present')}"
+      "institution": "${educationData[0]?.institution || ''}",
+      "degree": "${educationData[0]?.degree || ''}",
+      "field": "${educationData[0]?.field || ''}",
+      "period": "${educationData[0]?.startDate || ''} - ${educationData[0]?.endDate || t('resume.present')}"
     }
     // ...more education
   ],
@@ -183,6 +226,21 @@ const Resume: React.FC = () => {
   // Usando URL raw diretamente do repositório do projeto
   const pdfUrl = 'https://raw.githubusercontent.com/KennethDornelles/react-portfolio/main/public/assets/kenneth_olusegun_cv.pdf';
   const pdfFileName = 'kenneth_olusegun_cv.pdf';
+
+  // Mostra um indicador de carregamento enquanto as traduções estão sendo buscadas
+  if (!isLoaded) {
+    return (
+      <AnimatedSection id="resume" className="py-20">
+        <div className="container mx-auto px-4">
+          <div className="text-center">
+            <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]" role="status">
+              <span className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Carregando...</span>
+            </div>
+          </div>
+        </div>
+      </AnimatedSection>
+    );
+  }
 
   return (
     <AnimatedSection id="resume" className="py-20">

@@ -88,6 +88,8 @@ const ptBR = {
     "resume.downloadSection": "Baixar Currículo",
     "resume.downloadDescription": "Quer uma cópia do meu currículo? Baixe a versão em PDF clicando no botão abaixo.",
     "resume.downloadButton": "Baixar currículo em PDF",
+    
+    // Experience translations
     "resume.experience.company1": "Unimed João Pessoa",
     "resume.experience.position1": "Estagiário Desenv Sistema",
     "resume.experience.startDate1": "Jan 2025",
@@ -140,6 +142,21 @@ const ptBR = {
     "resume.experience.technology5.2": "APIs",
     "resume.experience.technology5.3": "Desenvolvimento Web",
     "resume.experience.technology5.4": "Testes",
+    
+    // Education translations
+    "resume.education.institution1": "Unicesumar",
+    "resume.education.degree1": "Bacharelado em Engenharia de Software",
+    "resume.education.field1": "Engenharia de Software",
+    "resume.education.startDate1": "Jan 2024",
+    "resume.education.description1": "Cursando Engenharia de Software, com foco em desenvolvimento de software, estruturas de dados, algoritmos e sistemas distribuídos. Participação em projetos de pesquisa e desenvolvimento de aplicações web.",
+    "resume.education.location1": "João Pessoa, PB",
+    
+    "resume.education.institution2": "Cod3r Cursos Online",
+    "resume.education.degree2": "Certificação Profissional",
+    "resume.education.field2": "Desenvolvimento Web Full Stack",
+    "resume.education.startDate2": "Jan 2020",
+    "resume.education.description2": "Curso completo de desenvolvimento web moderno abrangendo JavaScript, React, Vue, Node, HTML5, CSS3, jQuery, Bootstrap, Webpack, e banco de dados SQL e NoSQL.",
+    "resume.education.location2": "Curso Online",
     
     // Testimonials section
     "testimonials.title": "Depoimentos",

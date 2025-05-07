@@ -7,8 +7,19 @@ const LanguageSelector = () => {
     const [isOpen, setIsOpen] = useState(false);
 
     const changeLanguage = (lng: string) => {
-        i18n.changeLanguage(lng);
-        setIsOpen(false);
+        // Limpar o cache de recursos e recarregar as traduções
+        i18n.reloadResources().then(() => {
+            i18n.changeLanguage(lng);
+            // Forçar uma atualização do localStorage para garantir que as novas traduções sejam usadas
+            localStorage.setItem('i18nextLng', lng);
+            setIsOpen(false);
+
+            // Adicionar um pequeno delay e forçar um refresh da página
+            // Isso é uma solução temporária para garantir que as traduções sejam atualizadas
+            setTimeout(() => {
+                window.location.reload();
+            }, 100);
+        });
     };
 
     const currentLanguage = i18n.language;
