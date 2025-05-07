@@ -30,12 +30,13 @@ export default function Projects() {
       technologies: ["React", "TypeScript", "Tailwind CSS", "Vite"]
     },
     {
-      title: t('projects.jrTest'),
-      description: "Teste técnico para a vaga remota de Frontend Developer na Instruct",
-      image: "/images/teste-frontend-jr.png",
-      github: "https://github.com/KennethDornelles/teste-frontendr-jr-remoto-2021-04",
+      title: t('projects.ongep'),
+      description: "Sistema para gestão de ONGs e projetos sociais.",
+      image: "/images/ongep.png",
+      link: "https://ongep.vercel.app/",
+      github: "https://github.com/KennethDornelles/ongep",
       colSpan: "col-span-1",
-      technologies: ["HTML", "CSS", "JavaScript"]
+      technologies: ["React", "TypeScript", "Node.js", "MongoDB"]
     },
     {
       title: t('projects.kinvoTest'),

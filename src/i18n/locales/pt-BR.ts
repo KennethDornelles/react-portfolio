@@ -50,8 +50,8 @@ const ptBR = {
     "projects.viewProject": "Ver projeto",
     "projects.viewCode": "Ver código",
     "projects.portfolio": "Portfolio React",
-    "projects.jrTest": "Teste Frontend JR Remoto",
     "projects.kinvoTest": "Kinvo Front-end Test",
+    "projects.ongep": "ONGEP",
     "projects.others": "Outros Projetos",
     
     // Skills section

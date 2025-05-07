@@ -50,7 +50,7 @@ const enUS = {
     "projects.viewProject": "View project",
     "projects.viewCode": "View code",
     "projects.portfolio": "Portfolio React",
-    "projects.jrTest": "Frontend JR Remote Test",
+    "projects.ongep": "ONGEP",
     "projects.kinvoTest": "Kinvo Front-end Test",
     "projects.others": "Other Projects",
     
